@@ -1,5 +1,6 @@
 <?php
 
+use \Codeception\Util;
 
 /**
  * Inherited Methods
@@ -19,7 +20,7 @@
 class ApiTester extends \Codeception\Actor
 {
     use _generated\ApiTesterActions;
-
+    public $tempPath = "/token.txt";
    /**
     * Define custom actions here
     */
@@ -27,23 +28,38 @@ class ApiTester extends \Codeception\Actor
         $I = $this;
         $I->wantTo('Login with Authorization');
         $I->haveHttpHeader('accept', 'application/json');
-        $I->haveHttpHeader('Content-Type','application/json');
-        $I->sendPOST('Auth/Login',
-        ['account' => $account,
-        'password'=> $password
-        ]);
-         $I->seeResponseIsJson();
+        $I->haveHttpHeader('Content-Type', 'application/json');
+        $I->sendPOST(
+            'Auth/Login', 
+            [
+                'account' => $account,
+                'password'=> $password
+            ]
+        );
+        $I->seeResponseIsJson();
         $token = $I->grabDataFromResponseByJsonPath('data.token');
         // print_r($token);
+        
+        if (file_exists(getcwd() . $I->tempPath)) {
+            unlink(getcwd() . $I->tempPath);
+        }
+        file_put_contents(getcwd() . $I->tempPath, $token[0]);
         $I->haveHttpHeader('token_key', $token[0]);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 
     }
 
-    public function AdminLogin(){
+    public function AdminLogin() {
         $I = $this;
-        $I->Login('admindev','123456');
-        $I->seeResponseIsJson(); 
+        if (!file_exists(getcwd() . $I->tempPath)) {
+            $I->Login('admindev', '123456');
+        } else {
+            usleep(500);
+            $token = trim(file_get_contents(getcwd() . $I->tempPath));
+            $I->haveHttpHeader('accept', 'application/json');
+            $I->haveHttpHeader('Content-Type', 'application/json');
+            $I->haveHttpHeader('token_key', $token);
+        }
     }
 
     public function DisplayResponse($data){
