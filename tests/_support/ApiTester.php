@@ -1,7 +1,5 @@
 <?php
 
-use \Codeception\Util;
-
 /**
  * Inherited Methods
  * @method void wantToTest($text)
