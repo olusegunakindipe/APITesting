@@ -14,10 +14,10 @@ class _07_Statistics_Info_Hq_Cest
 
         $I->AdminLogin();
         $I->wantTo('Get the Matching fields in the List');
-        $I->sendGET('Info/ListBy/2019-02-07/2020-02-07/1/10');
+        $data = $I->sendGET('Info/ListBy/2019-02-07/2020-02-07/1/10');
 
         $I->dontSeeResponseContainsJson(['code' => 401]);
-        // it can match tree-like structures as well
+       
         $I->wantTo('see if the totalcount  Matches fields in the List');
         $I->CheckNumber($data);
        
