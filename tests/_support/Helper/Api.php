@@ -57,6 +57,7 @@ function Res($data){
 
     public function CheckForEmptiness($data){
         $datas = $this->Res($data); 
+        // print_r($datas);
         $this->assertNotEmpty( $datas['debug']['time'], "Check the resonse time is not empty ");
         $this->assertIsEmpty($datas['data']['data'], "Check if data array is empty");
     }
@@ -113,10 +114,17 @@ function Res($data){
 
    
    public function CheckUserAndCharge($data){
-    $datas = $this->Res($data); 
-    // print_r($datas);
-    $this->assertEquals('100000056848',$datas['data']['data'][0]['USER_ID'], "Check if USER_ID is correct");
-    $this->assertEquals('CO201906031902548519f0d912f497c9',$datas['data']['data'][0]['CHARGE_ORDER_ID'], "Check if CHARGE ORDER is correct");
+        $datas = $this->Res($data); 
+        $this->assertEquals('100000056848',$datas['data']['data'][0]['USER_ID'], "Check if USER_ID is correct");
+        $this->assertEquals('CO201906031902548519f0d912f497c9',$datas['data']['data'][0]['CHARGE_ORDER_ID'], "Check if CHARGE ORDER is correct");
+   }
+
+   public function CheckContent($data) {
+     $datas = $this->Res($data); 
+  
+     $this->assertEquals('333',$datas['data']['pageInfo']['total'], "Check if total or equals");
+     $this->assertEquals('17',$datas['data']['pageInfo']['pageTotal'], "Check if PageTotal is equals");
+     $this->assertEquals('20',$datas['data']['pageInfo']['size'], "Check if size equals");
 
    }
 

@@ -16,13 +16,13 @@ class _02_Tool_MainMenu_Cest
             $I->wantTo('Get the response Time of ToolMenuApi');
             $I->haveHttpHeader('accept', 'application/json');
             $I->haveHttpHeader('Content-Type','application/json');
-            $data = $I->sendGET('Tool/MainMenu');
-            // $data = $I->grabDataFromResponseByJsonPath('debug');
-             $a = $I->grabResponse();
-             $I->DisplayResponse($data); //This is response Time
-
+            $I->sendGET('Tool/MainMenu');
+            $data = $I->grabDataFromResponseByJsonPath('debug');
+            // $I->grabResponse();
+            $I->DisplayResponse($data); //This is response Time
+            
             $I->seeResponseContainsJson(array('time' => $data[0]['time']));
-             $I->CheckResponseTimeEquals();
+             $I->CheckResponseTimeEquals($data);
             $I->seeResponseIsJson();
             $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
             
