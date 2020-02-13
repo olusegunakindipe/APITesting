@@ -10,8 +10,9 @@ class _04_SearchES_Stat_Hq_Cest
     public function tryToTest(ApiTester $I)
     {
     }
-    Public function SearchES(ApiTester $I) {
 
+    public function SearchES(ApiTester $I)
+    {
         $I->AdminLogin();
         $I->wantTo('Get the ID and Matching fields in SearchES');
         $I->haveHttpHeader('accept', 'application/json');
@@ -19,9 +20,9 @@ class _04_SearchES_Stat_Hq_Cest
         $data = $I->sendGET('SearchES/Stat/hq/top/2020-01-07/2020-02-05');
         $I->CheckVariousData($data);
         $I->DisplayResponse($data); //This is response Time
-    // $data = $I->grabDataFromResponseByJsonPath('debug');
-         $I->grabResponse();
-         $I->CheckResponseTimeEquals($data);
+        // $data = $I->grabDataFromResponseByJsonPath('debug');
+        $I->grabResponse();
+        $I->CheckResponseTimeEquals($data);
         // $I->CheckId();
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);

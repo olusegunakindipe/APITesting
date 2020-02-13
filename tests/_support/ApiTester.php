@@ -22,7 +22,8 @@ class ApiTester extends \Codeception\Actor
    /**
     * Define custom actions here
     */
-    public function Login($account, $password) {
+    public function Login($account, $password)
+    {
         $I = $this;
         $I->wantTo('Login with Authorization');
         $I->haveHttpHeader('accept', 'application/json');
@@ -47,7 +48,8 @@ class ApiTester extends \Codeception\Actor
         $I->seeResponseCodeIs(200); 
     }
 
-    public function AdminLogin() {
+    public function AdminLogin()
+    {
         $I = $this;
         if (!file_exists(getcwd() . $I->tempPath)) {
             $I->Login('admindev', '123456');
@@ -60,7 +62,8 @@ class ApiTester extends \Codeception\Actor
         }
     }
 
-    public function DisplayResponse($data){
+    public function DisplayResponse($data)
+    {
         $I = $this;
         $I->wantTo('Check response Time for this Api');
         $data = $I->grabDataFromResponseByJsonPath('debug');

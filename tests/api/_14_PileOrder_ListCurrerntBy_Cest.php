@@ -11,8 +11,8 @@ class _14_PileOrder_ListCurrerntBy_Cest
     {
     }
 
-    Public function ListCurrentBy(ApiTester $I) {
-
+    Public function ListCurrentBy(ApiTester $I)
+    {
         $I->AdminLogin();
         $I->wantTo('Check if the some data are present in the API');
         $data = $I->sendGET('PileOrder/ListCurrentBy/1/20');
@@ -20,8 +20,6 @@ class _14_PileOrder_ListCurrerntBy_Cest
         $I->CheckPresence($data);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-         
-        // $I->CheckId();
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }

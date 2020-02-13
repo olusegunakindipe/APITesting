@@ -11,7 +11,8 @@ class _02_Tool_MainMenu_Cest
     {
     }
 
-        Public function Tool_Menu(ApiTester $I) {
+        public function Tool_Menu(ApiTester $I)
+        {
             $I->AdminLogin();
             $I->wantTo('Get the response Time of ToolMenuApi');
             $I->haveHttpHeader('accept', 'application/json');
@@ -20,13 +21,9 @@ class _02_Tool_MainMenu_Cest
             $data = $I->grabDataFromResponseByJsonPath('debug');
             // $I->grabResponse();
             $I->DisplayResponse($data); //This is response Time
-            
             $I->seeResponseContainsJson(array('time' => $data[0]['time']));
-             $I->CheckResponseTimeEquals($data);
+            $I->CheckResponseTimeEquals($data);
             $I->seeResponseIsJson();
             $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
-            
         }
-            
-    
 }
