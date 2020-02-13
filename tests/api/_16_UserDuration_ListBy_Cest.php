@@ -15,9 +15,9 @@ class _16_UserDuration_ListBy_Cest
 
         $I->AdminLogin();
         $I->wantTo('Get data response from the API');
+        $data = $I->sendGET('Package/UserDurationListBy/2019-02-07/2020-02-07/1/20');
         $I->haveHttpHeader('accept', 'application/json');
         $I->seeHttpHeader('Content-Type','application/json');
-        $data = $I->sendGET('Package/UserDurationListBy/2019-02-07/2020-02-07/1/20');
 
         $I->seeResponseContainsJson(['total' => 0, 'pageTotal'=>0]);
     
