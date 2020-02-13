@@ -19,7 +19,6 @@ class _32_Carport_UserManagerList_Cest
         $I->CheckDataIsEmpty($data);
         $I->SeeResponseContainsJson(['total' => 0]);
         $I->seeResponseIsJson();
-        $I->seeResponseCodeIs(200);
-        
+        $I->seeResponseCodeIs(200); 
     }
 }

@@ -1,6 +1,6 @@
 <?php 
 
-class _24_List_ByAll_Cest
+class _24_Pile_List_ByAll_Cest
 {
     public function _before(ApiTester $I)
     {

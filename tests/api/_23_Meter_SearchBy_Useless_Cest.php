@@ -1,6 +1,6 @@
 <?php 
 
-class _23_SearchBy_Useless_Cest
+class _23_Meter_SearchBy_Useless_Cest
 {
     public function _before(ApiTester $I)
     {

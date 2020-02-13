@@ -143,4 +143,62 @@ class Api extends \Codeception\Module
         $this->assertEquals('20', $datas['data']['pageInfo']['size'], "Check if size equals");
    }
 
+   public function CheckPackageIsEmpty($data)
+   {
+       $datas = $this->Res($data); 
+       $this->assertNotEmpty($datas['debug']['time'], "Check the resonse time is not empty ");
+       $this->assertIsEmpty($datas['data']['package'], "Check if data array is empty");
+       $this->assertIsEmpty($datas['data']['data'], "Check if data array is empty");
+    }
+    
+    public function CheckData($data)
+    {
+        $datas = $this->Res($data);
+        $this->assertEquals('333', $datas['data']['stopOrder'], "Check if stopOrder is correct");
+        $this->assertEquals('31313', $datas['data']['chargeOrder'], "Check if chargeOrder is equals");
+        $this->assertEquals('42', $datas['data']['packageOrder'], "Check if packageOrder equals");
+        $this->assertEquals('31688', $datas['data']['totalOrder'], "Check if totalOrder equals");
+    }
+
+    public function CheckAccount($data)
+    {
+        $datas = $this->Res($data); 
+        $this->assertEquals('admindev', $datas['data']['data'][0]['OPERATION_ACCOUNT'], "Check if stopOrder is correct");
+        $this->assertEquals('1', $datas['data']['data'][0]['STATE'], "Check if stopOrder is correct");
+    }
+
+    public function CheckForValue($data)
+    {
+        $datas = $this->Res($data); 
+        $this->assertEquals('城东名园', $datas['data']['data'][0]['CELL_NAME'], "Check if cell name corresponds");
+        $this->assertEquals('2020-01-11 23:12:12.700', $datas['data']['data'][0]['LAST_UPDATE'], "Check if last update corresponds");
+        $this->assertEquals('开发测试', $datas['data']['data'][2]['ELECTRICITY_METER_MODEL'], "Check if this electricity name corresponds");
+    }
+
+    public function GetDataCheck($data)
+    {
+        $datas = $this->Res($data); print_r($datas);
+        $this->assertNotEmpty($datas['data']['data'][0]['CELL_ID'], "Check the CELL_ID is not empty ");
+        $this->assertEquals('2020-01-13 14:21:09.813', $datas['data']['data'][0]['CREATE_TIME'], "Check if create time corresponds");
+        $this->assertEquals('摩尔城', $datas['data']['data'][0]['CELL_NAME'], "Check if CELL_NAME corresponds");
+        $this->assertNotNull($datas['data']['data'][1]['SITE_NUM'], "SITE_NUM should not be null");    
+    }
+
+    public function CheckAllDeviceData($data)
+    {
+        $datas = $this->Res($data);
+         $this->assertNotEmpty($datas['data']['data'][0]['CELL_ID'], "Check the CELL_ID is not empty ");
+        $this->assertEquals('思思小区', $datas['data']['data'][0]['CELL_NAME'], "Check if CELL_NAME corresponds");
+        $this->assertIsEmpty($datas['data']['data'][0]['ORDER_NUM'], "Check if order_numarray is empty");
+    }
+
+    public function CheckCarportDeviceData($data)
+    {
+        $datas = $this->Res($data); 
+        $this->assertNotEmpty($datas['data']['data'][0]['ENTRANCE_GUARD_NAME'], "Check the GUARD_NAME is not empty ");
+        $this->assertEquals('0511', $datas['data']['data'][0]['DEVICE_SN'], "Check if create time corresponds");
+        $this->assertEquals('城东名园小区智能车棚', $datas['data']['data'][0]['CARPORT_NAME'], "Check if CELL_NAME corresponds");
+        $this->assertNotNull($datas['data']['data'][1]['DIRECT'], "SITE_NUM should not be null");    
+    }
+
 }
