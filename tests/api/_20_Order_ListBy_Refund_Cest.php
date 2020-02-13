@@ -13,10 +13,10 @@ class _20_Order_ListBy_Refund_Cest
     public function OrderListByRefund(ApiTester $I) {
         $I->AdminLogin();
         $I->wantTo('Get the Matching fields in the List');
+        
+        $data = $I->sendGET('Order/ListByRefund/2019-02-07/2020-02-07/1/20');
         $I->haveHttpHeader('accept', 'application/json');
         $I->seeHttpHeader('Content-Type','application/json');
-        $data = $I->sendGET('Order/ListByRefund/2019-02-07/2020-02-07/1/20');
-
         $I->dontSeeResponseContainsJson(['code' => 401]);
         
         $I->wantTo('get if data is accurate as specified on the Api');
