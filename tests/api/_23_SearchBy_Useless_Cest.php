@@ -12,11 +12,11 @@ class _23_SearchBy_Useless_Cest
     }
 
     public function SearchByUseless(ApiTester $I){
+        $I->AdminLogin();
         $I->wantTo('test the values of fields in this api');
         $data = $I->sendGET('Meter/SearchByUseless');
         // $I->grabResponse();
         $I->DisplayResponse($data);
-         
          $I->seeResponseContainsJson(['data'=>
          
             ['ELECTRICITY_METER_SN' => '1',
