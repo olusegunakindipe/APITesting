@@ -12,8 +12,8 @@ class _01_Auth_Login_Cest
     }
 
     Public function Login(ApiTester $I){
-        $I->Login('admindev','123456');
-        $I->seeResponseIsJson(); 
+        $I->Login('admindev', '123456');
+        $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
         
     }
