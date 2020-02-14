@@ -17,9 +17,9 @@ class _49_User_GetUserStopOrder_Cest
         $I->wantTo('check possible data in the API record corresponding');
         $data=$I->sendGET('/User/GetUserStopOrder/100000049408/1/20');
         $I->DisplayResponse($data);
+        $I->CheckUserStopPackage($data);
         $I->dontSeeResponseCodeIs(404);
         $I->seeResponseIsJson();
-        $I->SeeResponseContainsJson(['data' => []]);
         $I->SeeResponseContainsJson(['code' => 200]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

@@ -17,8 +17,6 @@ class _38_Carport_ListByPaymentInfo_Cest
         $data= $I->sendGET('Carport/ListByPaymentInfo/2019-02-07/2020-02-07/1/20');
         $I->wantTo('check Info about the response and peak Time');
         $I->DisplayResponse($data);
-        $I->wantTo('check if the data is empty');
-        $I->CheckForEmptiness($data);
         $I->dontSeeResponseContainsJson(['total' => 0]);
         $I->wantTo('check the number of contents and total page');
         $I->CheckContent($data);

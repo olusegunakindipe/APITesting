@@ -1,6 +1,6 @@
 <?php 
 
-class _50_User_GetUserStopList_Cest
+class _69_FlatComplex_Get_Cest
 {
     public function _before(ApiTester $I)
     {
@@ -10,25 +10,23 @@ class _50_User_GetUserStopList_Cest
     public function tryToTest(ApiTester $I)
     {
     }
-    public function UserGetUserStopPackage(ApiTester $I)
+
+    public function FlatComplexGet(ApiTester $I)
     {
         $I->AdminLogin();
         $I->wantTo('check possible data in the API record corresponding');
-        $data=$I->sendGET('/User/GetUserStopList/100000049408/1/20');
+        $data=$I->sendGET('/FlatComplex/Get/5101040001');
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->DisplayResponse($data);
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->SeeResponseContainsJson([
-            'IN_USER_ID' => '100000049408',
-            'MOBILE_PHONE' => '13645184146',
-            'AREA' => '江苏省南京市六合区',
-            'USER_ID' => '100000049408',
-            'CREATE_TIME' => '2019-10-22 16:21:13'
+            'CELL_ID' => '5101040001',
+            'CELL_DISTRICT_CODE' => '510104',
+            'CELL_TELEPHONE' => '13540106518'
         ]);
-        $I->dontSeeResponseCodeIs(401);
+        $I->SeeResponseMatchesJsonType(['code' => 'integer']);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
-
 }

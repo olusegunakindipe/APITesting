@@ -17,12 +17,10 @@ class _37_Carport_ListByChargeHistory_Top_Cest
         $I->wantTo('check possible data in the API record corresponding');
         $data=$I->sendGET('Carport/ListByChargeHistory/top/2019-02-07/2020-02-07/1/20');
         $I->DisplayResponse($data);
-        $I->wantTo('check if the data is empty');
-        $I->CheckForEmptiness($data);
-        $I->wantTo('Check for Data and also the page numbers');
-        $I->CheckResponseTimeEquals($data);
-        $I->SeeResponseContainsJson(['total' => 0, 'pageTotal' => 0, 'size' => 20]);
-        $I->SeeResponseContainsJson(['data' => []]);
+        $I->dontSeeResponseCodeIs(401);
+        $I->wantTo('Check for Carport Charge History');
+        $I->CheckCarportChargeHistory($data);
+        // $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }

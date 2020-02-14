@@ -18,13 +18,10 @@ class _13_User_Feedback_Cest
         $data = $I->sendGET('User/Feedback/2019-02-07/2020-02-07/1/20');
         $I->haveHttpHeader('accept', 'application/json');
         $I->seeHttpHeader('Content-Type','application/json');
-        $I->dontSeeResponseMatchesJsonType([
-           'data' => [
-                'total' => 'integer',
-            ]
-        ]);
+        
+        $I->TestForUserFeedbackData($data);
         $I->dontSeeResponseCodeIs(401);
-        $I->CheckForEmptiness($data);
+    
         $I->DisplayResponse($data);
         $I->grabResponse();
         $I->CheckResponseTimeEquals($data);

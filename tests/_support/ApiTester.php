@@ -37,12 +37,14 @@ class ApiTester extends \Codeception\Actor
         );
         $I->seeResponseIsJson();
         $token = $I->grabDataFromResponseByJsonPath('data.token');
+        $tokeen = $I->amBearerAuthenticated($token);
         // print_r($token);
         
         if (file_exists(getcwd() . $I->tempPath)) {
             unlink(getcwd() . $I->tempPath);
         }
         file_put_contents(getcwd() . $I->tempPath, $token[0]);
+        $I->amBearerAuthenticated($token[0]);
         $I->haveHttpHeader('token_key', $token[0]);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 

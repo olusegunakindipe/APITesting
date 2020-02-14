@@ -22,7 +22,8 @@ class _29_Alert_ListByRealAlert_Cest
                 'DEVICE_TYPE' => 1,
                 'DEVICE_SN' => '798798789798000',
                 'CELL_ID' => null,
-            ]]);
+            ]
+        ]);
         $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 

@@ -18,10 +18,19 @@ class _51_Carport_GetwhiteListCest
         $data = $I->sendGET('/Carport/GetWhiteList/23');
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->wantTo('Check response Time for this Api');
+        $I->SeeResponseMatchesJsonType(['data'=>[
+            'ID'=> 'string',
+            'model_no' => 'string',
+            'NICK_NAME' => 'string',
+            'CREATE_USER_ACCOUNT' => 'string',
+            'USER_STATE'=> 'string',
+            'CARD_NO' => 'string|null',
+
+        ]
+        ]);
         $I->DisplayResponse($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
-        $I->checkData($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }

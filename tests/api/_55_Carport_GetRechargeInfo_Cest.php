@@ -19,7 +19,7 @@ class _55_Carport_GetRechargeInfo_Cest
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);
-        $I->CheckAccount($data);
+        $I->CheckForData($data);
         $I->wantTo('See if the datatypes are correct');
         $I->seeResponseMatchesJsonType(['data'=>[
             'rechargeOrder' => 'string',
