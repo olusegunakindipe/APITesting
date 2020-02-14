@@ -5,6 +5,7 @@ modules:
         - Asserts
         - REST :
             url : https://bdf-br.szyac.cn/
+            url2 : https://bdf.d.yianiot.cn/
             depends : PhpBrowser
             part: Json
         
