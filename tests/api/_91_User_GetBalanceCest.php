@@ -15,10 +15,19 @@ class _91_User_GetBalanceCest
     {
         $I->AdminLogin();
         $I->wantTo('check if data is accurate');
-        $data = $I->sendGET('/WorkBit/ListByUserWithdraw/1/20');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "/WorkBit/ListByUserWithdraw/";
+        $fullPath = $api . join("/", $urlParams);
+        $data = $I->sendGET($fullPath);
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);;
-        $I->getOrderListData($data);
+        // dont use hard code to check data.
+        // $I->getOrderListData($data);
         $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
