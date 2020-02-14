@@ -4,8 +4,8 @@ modules:
         - \Helper\Api
         - Asserts
         - REST :
-            url : https://bdf-br.szyac.cn/
-            url2 : https://bdf.d.yianiot.cn/
+            url2 : https://bdf-br.szyac.cn/
+            url : https://bdf.d.yianiot.cn/
             depends : PhpBrowser
             part: Json
         
