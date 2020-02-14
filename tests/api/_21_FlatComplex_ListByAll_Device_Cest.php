@@ -11,7 +11,7 @@ class _21_FlatComplex_ListByAll_Device_Cest
     {
     }
 
-    public function Order_List(ApiTester $I)
+    public function FlatComplexList(ApiTester $I)
     {
         $I->AdminLogin();
         $I->wantTo('check if data is accurate');
@@ -20,10 +20,15 @@ class _21_FlatComplex_ListByAll_Device_Cest
         $data = $I->grabDataFromResponseByJsonPath('debug');
         echo "Response Time is:";
         print_r($data[0]['time']);
-        $I->wantTo('Check if response Time is contained in this Api');
-        $I->seeResponseContainsJson(array('time' => $data[0]['time']));
-    //  $I->CheckForEmptiness();
-    //  $I->CheckResponseTimeEquals();  
+        $I->wantTo('Check if data is mcontained in json');
+        $I->seeResponseContainsJson(['data'=>[
+            'CELL_ID' => '4503030004',
+            'CELL_NAME' => '叠彩嘉园',
+            'CREATE_TIME' => '2020-02-14 15:25:57.473',
+            'METER_NUM' => 15
+            ]
+        ]);
+      
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }

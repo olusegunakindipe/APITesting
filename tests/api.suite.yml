@@ -1,10 +1,22 @@
 actor: ApiTester
-modules:
-    enabled:
-        - \Helper\Api
-        - Asserts
-        - REST :
-            url : https://bdf-br.szyac.cn/
-            depends : PhpBrowser
-            part: Json
-        
+env:
+    url1:
+        modules:
+            enabled:
+                - \Helper\Api
+                - Asserts
+                - REST :
+                    url : https://bdf-br.szyac.cn/
+                    depends : PhpBrowser
+                    part: Json
+
+    url2:
+        modules:
+            enabled:
+                - \Helper\Api
+                - Asserts
+                - REST :
+                    url : https://bdf.d.yianiot.cn/
+                    depends : PhpBrowser
+                    part: Json
+   

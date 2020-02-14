@@ -15,11 +15,11 @@ class _41_FlatComplex_GetWhite_Cest
     {
         $I->AdminLogin();
         $I->wantTo('check possible data in the API record corresponding');
-        $data=$I->sendGET('/FlatComplex/GetWhite/100000227661');
+        $data=$I->sendGET('/FlatComplex/GetWhite/100000056848');
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->DisplayResponse($data);
-        $I->wantTo('check if the data is empty');
-        $I->CheckPackageIsEmpty($data);
+        $I->CheckData('check if the data is empty');
+ 
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);

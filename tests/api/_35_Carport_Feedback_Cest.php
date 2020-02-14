@@ -17,10 +17,13 @@ class _35_Carport_Feedback_Cest
         $data = $I->sendGET('Carport/Feedback/2019-02-07/2020-02-07/1/20');
         $I->haveHttpHeader('accept', 'application/json');
         $I->seeHttpHeader('Content-Type','application/json');
-        $I->dontSeeResponseMatchesJsonType(['data' => ['total' => 'integer', 'pageTotal' => 'integer']]);
         $I->dontSeeResponseCodeIs(401);
-        $I->SeeResponseContainsJson(['data' => []]);
-        $I->CheckForEmptiness($data);
+        $I->SeeResponseContainsJson(['data' => [
+            'ID' => 980,
+            'USER_ID' => '100000181666',
+            'QUESTTYPE' => 3,
+            "PHONE" => '13076913310'
+        ]]);
         $I->DisplayResponse($data);
         $I->grabResponse();
         $I->CheckResponseTimeEquals($data);

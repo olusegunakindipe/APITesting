@@ -19,10 +19,14 @@ class _43_User_GetUserBalanceRecord_Cest
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('check if the data is empty');
-        $I->seeResponseContainsJson(['total' => 0, 'pageTotal'=>0, 'size'=>20]);
-        $I->wantTo('Get response is empty');
-        $I->CheckForEmptiness($data);
-        $I->SeeResponseContainsJson(['data' => []]);
+        $I->seeResponseContainsJson(['total' => 1, 'pageTotal'=>1, 'size'=>20]);
+     
+        $I->SeeResponseContainsJson(['data' => [
+            'ORDER_ID' => 'CO20200211170757bb4546f9ba945068',
+            'PAY_STATE' => 1,
+            'moneyType' => 1,
+            'createTime' => '2020-02-11 21:08:25'
+        ]]);
         $I->SeeResponseContainsJson(['query' => 2]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);

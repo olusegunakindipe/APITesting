@@ -19,8 +19,7 @@ class _22_Meter_ListBy_Cest
         $I->DisplayResponse($data);
         $I->wantTo('Check if response Time and Peak Time are contained in this Api');
         $I->wantTo('Check for Data and also the page numbers');
-        $I->CheckDataPageNumbers($data);
-        //  $I->CheckResponseTimeEquals();          
+        $I->CheckDataPageNumbers($data);          
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }

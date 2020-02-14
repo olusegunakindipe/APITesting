@@ -22,10 +22,9 @@ class _18_User_Balance_LogCest
         print_r($data[0]['time']);
         echo "Peak Time:"; //This is response Time
         print_r($data[0]['peak']); //This is the peak time
-        //  print_r($data);
         $I->CheckResponseTimeEquals($data);
-        $I->CheckDataIsEmpty($data);
-        $I->seeResponseContainsJson(['total' => 0]);
+        $I->CheckUsereBalanceData($data);
+        $I->seeResponseContainsJson(['total' => 652206, 'pageTotal' => 32611]);
         $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 

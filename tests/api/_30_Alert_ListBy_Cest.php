@@ -10,6 +10,7 @@ class _30_Alert_ListBy_Cest
     public function tryToTest(ApiTester $I)
     {
     }
+    
     public function AlertListBy(ApiTester $I) 
     {
         $I->AdminLogin();
