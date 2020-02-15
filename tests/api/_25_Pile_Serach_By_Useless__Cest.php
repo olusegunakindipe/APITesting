@@ -15,13 +15,22 @@ class _25_Pile_Serach_By_Useless__Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check for data correctness');
-        $data = $I->sendGET('Pile/SearchByUseless/1/20');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "/Pile/SearchByUseless/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->DisplayResponse($data);
         $datas = $I->grabDataFromResponseByJsonPath('data');
         echo "Total number:";
         print_r($datas[0]['pageInfo']['total']);
         $I->seeResponseIsJson();
         $I->CheckResponseTimeEquals($data);
+        $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(200);
         
     }
