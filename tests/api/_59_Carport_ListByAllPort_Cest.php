@@ -15,7 +15,15 @@ class _59_Carport_ListByAllPort_Cest
     {
         $I->AdminLogin();
         $I->wantTo('check if data is in the API');
-        $data = $I->sendGET('Carport/ListByAllPort/1/20');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "/Carport/ListByAllPort/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->wantTo('Print response Time for this Api');
         $I->DisplayResponse($data);
