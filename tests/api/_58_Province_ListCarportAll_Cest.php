@@ -17,14 +17,7 @@ class _58_Province_ListCarportAll_Cest
         $I->wantTo('Get to the data in the List');
         $data = $I->sendGET('Province/ListByCarportAll');
         $I->wantTo('Check the correctness of these data');
-        $I->seeResponseContainsJson([
-            'data' => [
-                'DISTRICT_CODE' => '460000',
-                'DISTRICT_NAME' => '海南省',
-                'GPS_LAT' =>'20.0317936000', 
-                'GPS_LNG' =>'110.3465118000'
-            ]
-        ]);
+        $I->GetProvinceList($data);
         $I->DisplayResponse($data);
         $I->grabResponse();
         $I->CheckResponseTimeEquals($data);
