@@ -15,16 +15,26 @@ class _16_UserDuration_ListBy_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Get data response from the API');
-        $data = $I->sendGET('Package/UserDurationListBy/2019-02-07/2020-02-07/1/20');
+        $startDate = "2020-01-07";
+        $endDate = "2020-02-07";
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $startDate,
+            $endDate,
+            $page,
+            $size
+        ];
+        $api = "/Package/UserDurationListBy/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->haveHttpHeader('accept', 'application/json');
         $I->seeHttpHeader('Content-Type','application/json');
-        $I->seeResponseContainsJson(['total' => 11217, 'pageTotal'=>561]);
         $I->CheckUserDurationData($data);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->grabResponse();
         $I->CheckResponseTimeEquals($data);
-        // $I->CheckId();
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
