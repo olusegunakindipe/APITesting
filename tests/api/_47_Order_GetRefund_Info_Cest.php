@@ -15,14 +15,22 @@ class _47_Order_GetRefund_Info_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Get the Matching fields in the List');
-        $data = $I->sendGET('/Order/GetRefundInfo/2019-02-11/2020-02-11');
+        $startDate = "2020-01-11";
+        $endDate = "2020-02-11";
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $startDate,
+            $endDate,
+            $page,
+            $size
+        ];
+        $api = "/Order/GetRefundInfo/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->haveHttpHeader('accept', 'application/json');
         $I->seeHttpHeader('Content-Type','application/json');
-        $I->SeeResponseContainsJson([ 
-            'NUM'=> 12739,
-            'TOTAL_FEE' => 21705.91,
-            'PACKAGE' => 0
-        ]);
+        $I->getOrder($data);
         $I->dontSeeResponseContainsJson(['code' => 404]);
         $I->seeResponseCodeIs(200);
     }
