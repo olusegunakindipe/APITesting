@@ -14,11 +14,19 @@ class _24_Pile_List_ByAll_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check for data correctness');
-        $data = $I->sendGET('Pile/ListByAll/1/20');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "/Pile/ListByAll/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->DisplayResponse($data);
         $I->seeResponseIsJson();
         $I->CheckResponseTimeEquals($data);
-        $I->seeResponseContainsJson(['ID'=> "248909", 'CHARGING_PILE_SN' => "12345678999999", 'CHARGING_PILE_STATE'=> "1"]);
+        $I->dontSeeResponseCodeIs(400);
         $I->seeResponseCodeIs(200);
     }
 
