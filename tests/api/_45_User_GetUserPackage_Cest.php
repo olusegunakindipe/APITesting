@@ -15,17 +15,24 @@ class _45_User_GetUserPackage_Cest
     {
         $I->AdminLogin();
         $I->wantTo('check possible data in the API record corresponding');
-        $data=$I->sendGET('/User/GetUserPackage/100000056848/1/20');
+        $page = 1;
+        $size = 20;
+        $id = '100000056848';
+        $urlParams = [
+            $page,
+            $size,
+            $id
+        ];
+        $api = "/User/GetUserPackage/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('check if the data is empty');
-        $I->CheckData($data);
-        // $I->seeResponseContainsJson(['total' => 0, 'pageTotal'=>0]);
-        // $I->wantTo('Get response is empty');
-        // $I->CheckForEmptiness($data);
-        // $I->wantTo('Get response Time for this Api');
-        // $I->DisplayResponse($data);
-        // $I->grabResponse();
-        // $I->CheckResponseTimeEquals($data);
-        // $I->seeResponseIsJson();
-        // $I->seeResponseCodeIs(200);
+        $I->wantTo('Get response Time for this Api');
+        $I->DisplayResponse($data);
+        $I->grabResponse();
+        $I->CheckResponseTimeEquals($data);
+        $I->wantTo('check if data returned json');
+        $I->seeResponseIsJson();
+        $I->seeResponseCodeIs(200);
     }
 }
