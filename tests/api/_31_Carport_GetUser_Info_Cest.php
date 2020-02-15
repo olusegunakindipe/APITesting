@@ -28,7 +28,7 @@ class _31_Carport_GetUser_Info_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->DisplayResponse($data);
-        $I->CheckIncome($data);
+        $I->CheckUserInfo($data);
         $I->dontSeeResponseCodeIs(401);      
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
