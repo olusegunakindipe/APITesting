@@ -15,11 +15,18 @@ class _62_Carport_ListByRealAlert_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check if the some data are present in the API');
-        $data = $I->sendGET('/Carport/ListByRealAlert/1/20');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "/Carport/ListByRealAlert/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('check if the data is not empty');
-        $I->seeResponseContainsJson(['total' => 116, 'pageTotal'=>6, 'size'=>20]);
         $I->checkCarportList($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
