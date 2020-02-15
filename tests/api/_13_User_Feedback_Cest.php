@@ -15,17 +15,26 @@ class _13_User_Feedback_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Get to the data in the List');
-        $data = $I->sendGET('User/Feedback/2019-02-07/2020-02-07/1/20');
+        $startDate ='2020-01-07';
+        $endDate='2020-02-07';
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $startDate,
+            $endDate,
+            $page,
+            $size,            
+        ];
+        $api = "/User/Feedback/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->haveHttpHeader('accept', 'application/json');
-        $I->seeHttpHeader('Content-Type','application/json');
-        
+        $I->seeHttpHeader('Content-Type','application/json');        
         $I->TestForUserFeedbackData($data);
         $I->dontSeeResponseCodeIs(401);
-    
         $I->DisplayResponse($data);
         $I->grabResponse();
         $I->CheckResponseTimeEquals($data);
-        // $I->CheckId();
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
