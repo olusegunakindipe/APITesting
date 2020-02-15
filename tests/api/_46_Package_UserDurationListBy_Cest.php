@@ -19,14 +19,7 @@ class _46_Package_UserDurationListBy_Cest
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
-        $I->seeResponseContainsJson([
-            'CARPORT_ID'=> "410305000420190509135908", 
-            'CARPORT_NAME' => "易安充小区测试车棚"
-        ]);
-        $I->seeResponseContainsJson([
-            'CARPORT_ID'=> "110105000220191212100529", 
-            'CARPORT_NAME' => "深圳111号车棚"
-        ]);
+        $I->getPackageUserData($data);
         $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
