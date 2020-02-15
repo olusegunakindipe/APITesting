@@ -14,11 +14,22 @@ class _31_Carport_GetUser_Info_Cest
     {
         $I->AdminLogin();
         $I->wantTo('check possible data in the API record corresponding');
-        $data=$I->sendGET('Carport/GetUserInfo/2019-02-07/2020-02-07');
+        $startDate = "2020-01-07";
+        $endDate = "2020-02-07";
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $startDate,
+            $endDate,
+            $page,
+            $size
+        ];
+        $api = "/Carport/GetUserInfo/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->DisplayResponse($data);
-        $I->wantTo('Check if response Time and Peak Time are contained in this Api');
-        $I->wantTo('Check for Data and also the page numbers');
         $I->CheckIncome($data);
+        $I->dontSeeResponseCodeIs(401);      
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
