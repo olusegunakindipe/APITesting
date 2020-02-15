@@ -14,8 +14,19 @@ class _19_User_GetRechargeInfo_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check if the some data are accurate');
-        $data = $I->sendGET('User/GetRechargeInfo/2019-02-07/2020-02-07/1/20');
-        // $I->CheckPresence();
+        $startData ="2020-01-07";
+        $endDate = "2020-02-07";
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $startData,
+            $endDate,
+            $page,
+            $size
+        ];
+        $api = "/User/GetRechargeInfo/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->seeResponseMatchesJsonType([ 'data'=>[
