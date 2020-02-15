@@ -14,7 +14,7 @@ class _08_User_UserManagerList_Cest
     public function UserManagerList(ApiTester $I)
     {
         $I->AdminLogin();
-        $I->wantTo('Get the response Time of ToolMenuApi');
+        $I->wantTo('Get the get usermenu data');
         $startDate = '2019-12-20';
         $endDate = '2020-01-20';
         $page = 1;
