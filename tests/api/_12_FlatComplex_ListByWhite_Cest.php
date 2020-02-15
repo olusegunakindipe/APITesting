@@ -14,12 +14,21 @@ class _12_FlatComplex_ListByWhite_Cest
     public function FlatComplexListBy(ApiTester $I)
     {
         $I->AdminLogin();
-        $I->wantTo('Check if the data from the API is returning empty');
-        $data = $I->sendGET('FlatComplex/ListByWhite/1/20');
+        $I->wantTo('Check if the data from the API is correct');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "FlatComplex/ListByWhite/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
     //  $data = $I->grabDataFromResponseByJsonPath('debug');
         $I->DisplayResponse($data);
         $I->grabResponse();
-        $I->CheckForEmptiness($data);
+        $I->CheckFlatCoplexListBy($data);
+        $I->dontseeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
