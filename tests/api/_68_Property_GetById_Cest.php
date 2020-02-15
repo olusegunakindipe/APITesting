@@ -15,7 +15,13 @@ class _68_Property_GetById_Cest
     {
         $I->AdminLogin();
         $I->wantTo('check possible data in the API record corresponding');
-        $data=$I->sendGET('/Property/GetById/893');
+        $id = 893;;
+        $urlParams = [
+            $id,
+        ];
+        $api = "/Property/GetById/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->DisplayResponse($data);
         $I->dontSeeResponseCodeIs(401);
