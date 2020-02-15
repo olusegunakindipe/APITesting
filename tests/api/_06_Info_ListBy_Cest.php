@@ -13,7 +13,7 @@ class _06_Info_ListBy_Cest
     public function InfoListBy(ApiTester $I)
     {
         $I->AdminLogin();
-        $I->wantTo('Get the the Matching fields in the List');
+        $I->wantTo('See if response contains Json');
         $startDate = '2020-01-07';
         $endDate = '2020-02-07';
         $page = 1;
