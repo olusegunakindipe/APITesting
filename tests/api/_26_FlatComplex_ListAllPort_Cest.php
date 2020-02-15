@@ -16,18 +16,21 @@ class _26_FlatComplex_ListAllPort_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check if the data is correct');
-        $data = $I->sendGET('FlatComplex/ListByAllPort/1/20');
-        // $I->CheckPresence();
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "/FlatComplex/ListByAllPort/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('check if the data are of specfic value');
-        $I->seeResponseContainsJson([ 
-            'CELL_ID' => '5001180003',
-            'CELL_NAME' => '思思小区',
-            'ID' => '890165',
-            'TOTAL_MINUTE' => 0
-        ]);
-        $I->seeResponseIsJson();
-        $I->seeResponseCodeIs(200); 
+        $I->checkFlatComplexListData($data);
+        $I->dontSeeResponseCodeIs(401);
+        $I->seeResponseCodeIs(200);
+        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
 }
