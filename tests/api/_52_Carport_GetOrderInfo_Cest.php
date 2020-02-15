@@ -15,7 +15,15 @@ class _52_Carport_GetOrderInfo_Cest
     {
         $I->AdminLogin();
         $I->wantTo('check possible data in the API record corresponding');
-        $data=$I->sendGET('/Carport/GetOrderInfo/2019-02-11/2020-02-11');
+        $startDate = '2020-01-11';
+        $endDate = '2020-02-11';
+        $urlParams = [
+            $startDate,
+            $startDate
+        ];
+        $api = "/Carport/GetOrderInfo/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->DisplayResponse($data);
         $I->wantTo('Check if Datatype is correct');
         $I->seeResponseMatchesJsonType([ 'data'=>[
