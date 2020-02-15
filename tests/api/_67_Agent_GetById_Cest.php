@@ -19,17 +19,9 @@ class _67_Agent_GetById_Cest
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->DisplayResponse($data);
         $I->dontSeeResponseCodeIs(401);
+        $I->wantTo('check if data return json');
         $I->seeResponseIsJson();
-        $I->SeeResponseContainsJson([
-            'ID' => '262',
-            'RELATION_ID' => null,
-            'AGENT_ID' => '522627198910080410',
-            'AGENT_ACCOUNT' => 'agent_522627198910080410',
-            'AGENT_TYPE' => '2',
-            'AGENT_CLASS' => '1',
-            'STATUS' => '0'
-        ]);
-        $I->SeeResponseContainsJson(['code' => 200]);
+        $I->getAgentId($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
