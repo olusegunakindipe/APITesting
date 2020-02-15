@@ -15,10 +15,18 @@ class _40_User_Info_Cest
     {
         $I->AdminLogin();
         $I->wantTo('check possible data in the API record corresponding');
-        $data=$I->sendGET('User/Info/100000227661');
+        $id = '100000227661';
+        $urlParams = [
+            $id
+        ];
+        $api = "/User/Info/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->DisplayResponse($data);
+        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->wantTo('check if the data contains data');
         $I->CheckUserData($data);
+        $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
