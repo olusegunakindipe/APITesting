@@ -15,20 +15,21 @@ class _21_FlatComplex_ListByAll_Device_Cest
     {
         $I->AdminLogin();
         $I->wantTo('check if data is accurate');
-        $I->sendGET('FlatComplex/ListByAllDevice/1/20');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "FlatComplex/ListByAllDevice/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('Check response Time for this Api');
         $data = $I->grabDataFromResponseByJsonPath('debug');
         echo "Response Time is:";
         print_r($data[0]['time']);
-        $I->wantTo('Check if data is mcontained in json');
-        $I->seeResponseContainsJson(['data'=>[
-            'CELL_ID' => '4503030004',
-            'CELL_NAME' => '叠彩嘉园',
-            'CREATE_TIME' => '2020-02-14 15:25:57.473',
-            'METER_NUM' => 15
-            ]
-        ]);
-      
+        $I->wantTo('Check if data is contained in json');
+        $I->DataInJson($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
