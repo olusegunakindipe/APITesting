@@ -15,11 +15,18 @@ class _17_User_GetOrder_Info_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Get the Matching fields in the List');
-        $data = $I->sendGET('User/GetOrderInfo/2019-02-07/2020-02-07');
+        $startDate = '2020-01-07';
+        $endDate = '2020-02-07';
+        $urlParams = [
+            $startDate,
+            $endDate
+        ];
+        $api = "/User/GetOrderInfo/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->haveHttpHeader('accept', 'application/json');
         $I->seeHttpHeader('Content-Type','application/json');
         $I->dontSeeResponseContainsJson(['code' => 401]);
-        // it can match tree-like structures as well
         $I->wantTo('get if data is accurate as specified on the Api');
         $I->CheckDataIsCorrect($data);
         $I->grabResponse();
