@@ -15,7 +15,13 @@ class _72_Contract_Get_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check if the some data are present in the API');
-        $data = $I->sendGET('/Contract/Get/944');
+        $id = 944;
+        $urlParams = [
+            $id,
+        ];
+        $api = "/Contract/Get/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->dontSeeResponseCodeIs(401);
