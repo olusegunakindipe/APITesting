@@ -24,7 +24,6 @@ class _27_Hq_Info_Cest
             'province' => 'array',
             'num_site' => 'string']
         ]);
-        $I->dontSeeResponseContainsJson(['total' => 0]);
         $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
