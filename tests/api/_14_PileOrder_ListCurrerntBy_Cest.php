@@ -15,7 +15,15 @@ class _14_PileOrder_ListCurrerntBy_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check if the some data are present in the API');
-        $data = $I->sendGET('PileOrder/ListCurrentBy/1/20');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "/PileOrder/ListCurrentBy/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->grabResponse();
         $I->CheckPresence($data);
         $I->wantTo('Get response Time for this Api');
