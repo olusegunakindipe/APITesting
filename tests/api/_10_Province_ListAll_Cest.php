@@ -17,16 +17,8 @@ class _10_Province_ListAll_Cest
         $I->wantTo('Get to the data in the List');
         $I->haveHttpHeader('accept', 'application/json');
         $I->haveHttpHeader('Content-Type','application/json');
-        $data = $I->sendGET('Province/ListAll');
-        $I->seeResponseContainsJson([
-            'data' => [
-                'DISTRICT_CODE' => '110000',
-                'DISTRICT_NAME' => '北京市',
-                'PID' =>'0',  
-            ]
-        ]);
+        $data = $I->sendGET('Province/ListAll');        
         $I->DisplayResponse($data);
-        // $data = $I->grabDataFromResponseByJsonPath('debug');
         $I->grabResponse();
         $I->CheckResponseTimeEquals($data);
         // $I->CheckId();
