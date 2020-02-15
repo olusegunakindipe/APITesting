@@ -14,7 +14,15 @@ class _03_SearchES_StatGroup_Hq_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Get the ID and Matching field in SearchES');
-        $data = $I->sendGET('SearchES/StatGroup/hq/top/2019-02-07/2020-02-07');
+        $startDate = '2020-01-07';
+        $endDate = '2020-02-07';
+        $urlParams = [
+            $startDate,
+            $endDate
+        ];
+        $api = "/SearchES/StatGroup/hq/top/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('print response Time for this Api');
         $I->DisplayResponse($data); //This is response Time
         $I->grabResponse();
