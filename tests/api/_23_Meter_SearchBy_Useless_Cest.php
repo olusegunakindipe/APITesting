@@ -18,12 +18,8 @@ class _23_Meter_SearchBy_Useless_Cest
         $data = $I->sendGET('Meter/SearchByUseless');
         // $I->grabResponse();
         $I->DisplayResponse($data);
-        $I->seeResponseContainsJson(['data'=>[
-            'ELECTRICITY_METER_SN' => '1',
-            'ELECTRICITY_METER_MODEL' => '1',
-            'ELECTRICITY_METER_NAME' => '1',
-            ]
-        ]);
+        $I->SearchByData($data);
+        $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
