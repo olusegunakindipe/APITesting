@@ -15,7 +15,13 @@ class _51_Carport_GetwhiteListCest
     {
         $I->AdminLogin();
         $I->wantTo('check if data is in the API');
-        $data = $I->sendGET('/Carport/GetWhiteList/23');
+        $id = 23;
+        $urlParams = [
+            $id
+        ];
+        $api = "/Carport/GetWhiteList/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->wantTo('Check response Time for this Api');
         $I->SeeResponseMatchesJsonType(['data'=>[
@@ -29,7 +35,6 @@ class _51_Carport_GetwhiteListCest
         ]
         ]);
         $I->DisplayResponse($data);
-        $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
