@@ -14,15 +14,21 @@ class _32_Carport_UserManagerList_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Get spme fields in this api');
-        $data = $I->sendGET('Carport/UserManagerList/2019-02-07/2020-02-07/1/20');
+        $startDate = '2020-01-07';
+        $endDate = '2020-02-07';
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $startDate,
+            $endDate,
+            $page,
+            $size
+        ];
+        $api = "/Carport/UserManagerList/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->DisplayResponse($data);
-        $I->seeResponseContainsJson([
-            'data' => [
-                'USER_ID' => '100000227011',
-                'CREATE_TIME' => '2020-02-07 23:49:18',
-                
-            ]
-        ]);
+        $I->GetUserManagerList($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
