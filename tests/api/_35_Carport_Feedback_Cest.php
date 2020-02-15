@@ -14,16 +14,23 @@ class _35_Carport_Feedback_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Get to the data in the List');
-        $data = $I->sendGET('Carport/Feedback/2019-02-07/2020-02-07/1/20');
+        $startDate = "2020-01-07";
+        $endDate = "2020-02-07";
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $startDate,
+            $endDate,
+            $page,
+            $size
+        ];
+        $api = "/Carport/Feedback/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->haveHttpHeader('accept', 'application/json');
         $I->seeHttpHeader('Content-Type','application/json');
         $I->dontSeeResponseCodeIs(401);
-        $I->SeeResponseContainsJson(['data' => [
-            'ID' => 980,
-            'USER_ID' => '100000181666',
-            'QUESTTYPE' => 3,
-            "PHONE" => '13076913310'
-        ]]);
+        $I->getCarportFeebackData($data);
         $I->DisplayResponse($data);
         $I->grabResponse();
         $I->CheckResponseTimeEquals($data);
