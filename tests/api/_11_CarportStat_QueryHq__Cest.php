@@ -14,7 +14,19 @@ class _11_CarportStat_QueryHq__Cest
     {
         $I->AdminLogin();
         $I->wantTo('Get spme fields in this api');
-        $data = $I->sendGET('CarportStat/Query/hq/top/2019-02-07/2020-02-07');
+        $startDate = '2020-01-07';
+        $endDate = '2020-02-07';
+        $page = 1;
+        $limit = 20;
+        $urlParams = [
+            $startDate,
+            $endDate,
+            $page,
+            $limit
+        ];
+        $api = "/CarportStat/Query/hq/top/";
+        $fullPath = $api . join("/", $urlParams);
+        $data = $I->sendGET($fullPath);
         $I->grabResponse();
         $I->DisplayResponse($data);
         $I->seeResponseMatchesJsonType(['data'=>[
