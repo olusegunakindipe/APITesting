@@ -13,11 +13,22 @@ class _38_Carport_ListByPaymentInfo_Cest
     public function ListPaymentInfo(ApiTester $I)
     {
         $I->AdminLogin();
-        $I->wantTo('Get the response Time of ToolMenuApi');
-        $data= $I->sendGET('Carport/ListByPaymentInfo/2019-02-07/2020-02-07/1/20');
+        $I->wantTo('Get the correct data');
+        $startDate = "2020-01-07";
+        $endDate = "2020-02-07";
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $startDate,
+            $endDate,
+            $page,
+            $size
+        ];
+        $api = "/Carport/ListByPaymentInfo/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('check Info about the response and peak Time');
         $I->DisplayResponse($data);
-        $I->dontSeeResponseContainsJson(['total' => 0]);
         $I->wantTo('check the number of contents and total page');
         $I->CheckContent($data);
         $I->seeResponseIsJson();
