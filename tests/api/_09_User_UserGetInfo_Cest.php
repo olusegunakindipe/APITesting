@@ -15,11 +15,18 @@ class _09_User_UserGetInfo_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check if the data are correctly stored');
-        $data = $I->sendGET('User/GetUserInfo/2019-02-07/2020-02-07');
+        $startDate = '2020-01-07';
+        $endDate = '2020-02-07';
+        $urlParams = [
+            $startDate,
+            $endDate
+        ];
+        $api = "/User/GetUserInfo/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->grabResponse();
         $I->CheckDetail($data);
         $I->DisplayResponse($data);
-        // $I->CheckId();
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
     }
