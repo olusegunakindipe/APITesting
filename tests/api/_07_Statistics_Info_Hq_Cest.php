@@ -14,12 +14,10 @@ class _07_Statistics_Info_Hq_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Get the Matching fields in the List');
-        $data = $I->sendGET('Info/ListBy/2019-02-07/2020-02-07/1/10');
+        $data = $I->sendGET('/Statistics/Info/hq/top');
         $I->DisplayResponse($data);
-        $I->dontSeeResponseContainsJson(['code' => 401]);
-        $I->wantTo('see if the totalcount  Matches fields in the List');
-        $I->CheckNumber($data);
-        // $data = $I->grabDataFromResponseByJsonPath('debug');
+        $I->wantTo('see if data is the List');
+        $I->CheckInfoList($data);
         $I->grabResponse();
         $I->CheckResponseTimeEquals($data);
         // $I->CheckId();
