@@ -19,6 +19,7 @@ class _06_Info_ListBy_Cest
         $page = 1;
         $limit = 20;
         $urlParams = [
+            
             $startDate,
             $endDate,
             $page,
@@ -31,6 +32,7 @@ class _06_Info_ListBy_Cest
         $I->wantTo('see if response contains json');
         $I->seeResponseIsJson();
         $I->grabResponse();
+        $I->CheckNumber($data);
         $I->dontSeeResponseCodeIs(401);
         $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
