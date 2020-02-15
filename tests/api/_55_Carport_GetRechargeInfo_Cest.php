@@ -15,7 +15,19 @@ class _55_Carport_GetRechargeInfo_Cest
     {
         $I->AdminLogin();
         $I->wantTo('check if data is in the API');
-        $data = $I->sendGET('/Carport/GetRechargeInfo/2019-02-11/2020-02-11/1/20');
+        $startDate = '2020-01-11';
+        $endDate = '2020-02-11';
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $startDate,
+            $endDate,
+            $page,
+            $size
+        ];
+        $api = "/Carport/GetRechargeInfo/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);
@@ -29,7 +41,6 @@ class _55_Carport_GetRechargeInfo_Cest
             ]
         ]);
         $I->wantTo('Check if this particular date is present');
-        $I->SeeResponseContainsJson(['statistics_date' => '2020-02-09']);
         $I->DontSeeResponseCodeIs(401); 
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
