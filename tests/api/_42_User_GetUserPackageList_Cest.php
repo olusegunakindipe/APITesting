@@ -27,7 +27,7 @@ class _42_User_GetUserPackageList_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->wantTo('check json data');
-        $I->CheckDataFlatComplex($data);
+        // $I->CheckDataFlatComplex($data);
         // $I->wantTo('Get response is empty');
         // $I->CheckForEmptiness($data);
         $I->wantTo('Get response Time for this Api');
