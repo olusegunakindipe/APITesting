@@ -14,7 +14,19 @@ class _20_Order_ListBy_Refund_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Get the Matching fields in the List');
-        $data = $I->sendGET('Order/ListByRefund/2019-02-07/2020-02-07/1/20');
+        $startData ="2020-01-07";
+        $endDate = "2020-02-07";
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $startData,
+            $endDate,
+            $page,
+            $size
+        ];
+        $api = "/Order/ListByRefund/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->haveHttpHeader('accept', 'application/json');
         $I->seeHttpHeader('Content-Type','application/json');
         $I->dontSeeResponseContainsJson(['code' => 401]);
