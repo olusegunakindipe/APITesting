@@ -14,16 +14,17 @@ class _29_Alert_ListByRealAlert_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Get the the Matching fields in the List');
-        $data = $I->sendGET('Alert/ListByRealAlert/1/20');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "/Alert/ListByRealAlert/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->DisplayResponse($data);
-        $I->seeResponseContainsJson([
-          'data' => [
-                 'ALERT_TIME' => '2020-01-03 22:01:59.880',
-                'DEVICE_TYPE' => 1,
-                'DEVICE_SN' => '798798789798000',
-                'CELL_ID' => null,
-            ]
-        ]);
+        $I->checkInfoListData($data);
         $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
