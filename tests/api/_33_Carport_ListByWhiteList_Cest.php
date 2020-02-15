@@ -14,7 +14,16 @@ class _33_Carport_ListByWhiteList_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check if the data are correctly stored');
-        $data = $I->sendGET('Carport/ListByWhiteList/1/20');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "/Carport/ListByWhiteList/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
+        $I->DisplayResponse($data);
         $I->grabResponse();
         $I->CheckCarportListData($data);
         $I->seeResponseIsJson();
