@@ -15,7 +15,15 @@ class _60_Carport_ListByDevice_Cest
     {
         $I->AdminLogin();
         $I->wantTo('check if data is in the API');
-        $data = $I->sendGET('Carport/ListByDevice/1/20');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "/Carport/ListByDevice/1/20/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);
