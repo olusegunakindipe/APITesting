@@ -14,18 +14,19 @@ class _64_Agent_ListBy_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check if the some data are present in the API');
-        $data = $I->sendGET('/Agent/ListBy/1/20');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "/Agent/ListBy/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        $I->wantTo('check if the data is empty');
-        $I->seeResponseContainsJson([
-            "ID" => "264",
-            "AGENT_ID" => "110101199003074274", 
-            "AGENT_ACCOUNT" => "agent_testprivilege",
-            "AGENT_TYPE" => "1",
-            "AGENT_CLASS" => "1",
-            "ADD_CHILDREN_INFO" => "0"
-        ]);
+        $I->wantTo('check Agent list data');
+        $I->checkAgentData($data);
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
