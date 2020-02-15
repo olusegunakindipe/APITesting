@@ -15,7 +15,15 @@ class _66_FlatComplex_ListBy_Cest
     {
         $I->AdminLogin();
         $I->wantTo('check if data is accurate');
-        $data = $I->sendGET('FlatComplex/ListBy/1/20');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "/FlatComplex/ListBy/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);
         $I->checkFlatComplexList($data);
