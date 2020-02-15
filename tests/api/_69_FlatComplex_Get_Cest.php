@@ -15,17 +15,27 @@ class _69_FlatComplex_Get_Cest
     {
         $I->AdminLogin();
         $I->wantTo('check possible data in the API record corresponding');
-        $data=$I->sendGET('/FlatComplex/Get/5101040001');
+        $id = '5101040001';
+        $urlParams = [
+            $id 
+        ];
+        $api = "/FlatComplex/Get/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->DisplayResponse($data);
         $I->dontSeeResponseCodeIs(401);
-        $I->seeResponseIsJson();
-        $I->SeeResponseContainsJson([
-            'CELL_ID' => '5101040001',
-            'CELL_DISTRICT_CODE' => '510104',
-            'CELL_TELEPHONE' => '13540106518'
+        $I->GetFlatComplexData($data);
+        $I->SeeResponseMatchesJsonType(['data' => 
+            [
+                'CELL_ID'=> 'string',
+                'CELL_NAME'=> 'string',
+                'LOCATION'=> 'string',
+                'NATURE'=> 'string',
+                'GPS_LNG' => 'string'
+
+             ]
         ]);
-        $I->SeeResponseMatchesJsonType(['code' => 'integer']);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
