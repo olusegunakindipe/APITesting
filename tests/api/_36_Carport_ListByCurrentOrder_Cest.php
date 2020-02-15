@@ -14,7 +14,15 @@ class _36_Carport_ListByCurrentOrder_Cest
     {
         $I->AdminLogin();
         $I->wantTo('check if data is in the API');
-        $data = $I->sendGET('Carport/ListByCurrentOrder/1/20');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "/Carport/ListByCurrentOrder/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);
