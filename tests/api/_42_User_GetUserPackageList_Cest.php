@@ -15,7 +15,17 @@ class _42_User_GetUserPackageList_Cest
     {
         $I->AdminLogin();
         $I->wantTo('check possible data in the API record corresponding');
-        $data=$I->sendGET('/User/GetUserPackageList/100000227661/1/20');
+        $page = 1;
+        $size = 20;
+        $id = '100000227661';
+        $urlParams = [
+            $page,
+            $size,
+            $id
+        ];
+        $api = "/User/GetUserPackageList/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('check json data');
         $I->CheckDataFlatComplex($data);
         // $I->wantTo('Get response is empty');
