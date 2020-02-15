@@ -26,9 +26,9 @@ class _08_User_UserManagerList_Cest
             $page,
             $limit
         ];
-        $api = "/Info/ListBy/";
+        $api = "/User/UserManagerList/";
         $path = $api . join("/", $urlParams);
-        $data = $I->sendGET('User/UserManagerList/2019-02-07/2020-02-07/1/20');
+        $data = $I->sendGET($path);
         $I->DisplayResponse($data); //This is response Time
         $I->checkUserManagerData($data);
         $I->dontSeeResponseCodeIs(401);
