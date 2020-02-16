@@ -15,20 +15,26 @@ class _85_WorkBit_ListByAgent_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check if the some data are present in the API');
-        $data = $I->sendGET('/WorkBit/ListByBisAgent/1/20');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "/WorkBit/ListByBisAgent/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->dontSeeResponseMatchesJsonType([
             'data' => [
-                 'ROWNUM' => 'integer',
-                 'BIS_ID' => 'integer',
-                 'NAME' => 'string|null',
-                 'AGENT_BEAR' => 'integer',
-                 'CREATE_TIME' => 'string',
-                 'AGENT_FIELD_COST' => 'float'
+                
+                'SPLIT_TYPE' => 'integer',
+                'NAME' => 'null',
+                'RETAIL_TYPE_NO' => 'null',
+                'CREATE_TIME' => 'integer'
              ]
          ]);
-        $I->seeResponseContainsJson(['total' => 421, 'pageTotal'=>22]);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
