@@ -15,7 +15,13 @@ class _76_Carport_Get_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check if the some data are present in the API');
-        $data = $I->sendGET('/Carport/Get/510107000520200113032712');
+        $id = '510107000520200113032712';
+        $urlParams = [
+            $id
+        ];
+        $api = "/Carport/Get/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->CarportGetData($data);
