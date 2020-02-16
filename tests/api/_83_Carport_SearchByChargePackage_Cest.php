@@ -14,7 +14,7 @@ class _83_Carport_SearchByChargePackage_Cest
     public function CarportSearchBy(ApiTester $I)
     {
         $I->AdminLogin();
-        $I->wantTo('Check if the some data are present in the API');
+        $I->wantTo('Check if the some data are present in the Api');
         $id = '350104000320190411095938';
         $urlParams = [
             $id
