@@ -31,9 +31,9 @@ class _51_Carport_GetwhiteListCest
             'CREATE_USER_ACCOUNT' => 'string',
             'USER_STATE'=> 'string',
             'CARD_NO' => 'string|null',
-
-        ]
+            ]
         ]);
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->DisplayResponse($data);
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();
