@@ -25,7 +25,9 @@ class _40_User_Info_Cest
         $I->DisplayResponse($data);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->wantTo('check if the data contains data');
-        $I->CheckUserData($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data...USER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CREATE_TIME');
+        // $I->CheckUserData($data);
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
