@@ -24,7 +24,10 @@ class _76_Carport_Get_Cest
         $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        $I->CarportGetData($data);
+        // $I->CarportGetData($data);
+        $I->dontSeeResponseContainsJson(['data' => 'invalid argument']);
+        $I->seeResponseJsonMatchesJsonPath('$.data.CARPORT_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.CARPORT_NAME');
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
