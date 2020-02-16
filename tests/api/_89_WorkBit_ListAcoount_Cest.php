@@ -15,16 +15,19 @@ class _89_WorkBit_ListAcoount_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check if the some data are present in the API');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "/WorkBit/ListByUserWithdraw/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $data = $I->sendGET('/WorkBit/ListByAccount/1/20');
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->TestAccountList($data);
-        $I->seeResponseContainsJson(
-            [
-                'NAME' => '杏花代理商', 
-                'ACCOUNT' => 'agent_xinghua', 
-            ]
-        );
         $I->dontSeeResponseCodeIs(401); 
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 
