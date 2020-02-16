@@ -21,7 +21,11 @@ class _67_Agent_GetById_Cest
         $I->dontSeeResponseCodeIs(401);
         $I->wantTo('check if data return json');
         $I->seeResponseIsJson();
-        $I->getAgentId($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.RELATION_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.AGENT_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.AGENT_ACCOUNT');
+        // $I->getAgentId($data);
+        $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
