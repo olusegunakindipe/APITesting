@@ -26,7 +26,9 @@ class _82_Package_SystemStopListBy_Cest
         $data = $I->sendGET($path);
         $I->wantTo('Get response time');
         $I->DisplayResponse($data);
-        $I->TestPackageSystemStop($data);
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data...PACKAGE_ID');
+        // $I->TestPackageSystemStop($data);
         $I->seeResponseIsJson(); 
         $I->dontSeeResponseCodeIs(401); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
