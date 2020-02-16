@@ -32,7 +32,9 @@ class _42_User_GetUserPackageList_Cest
         // $I->CheckForEmptiness($data);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        $I->grabResponse();
+        $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
+        $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
+        // $I->grabResponse();
         $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
