@@ -28,9 +28,13 @@ class _57_Carport_ListByAllDevice_Cest
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('See if the data are correct');
-        $I->GetDataCheck($data);
+        // $I->GetDataCheck($data);
         $I->grabResponse();
-        $I->CheckResponseTimeEquals($data);
+        $I->dontSeeResponseContainsJson(['code' => 401]);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CREATE_TIME');
+        // $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
