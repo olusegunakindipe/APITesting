@@ -26,13 +26,14 @@ class _04_SearchES_Stat_Hq_Cest
         $api = "/SearchES/Stat/hq/top/";
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
-        $I->CheckVariousData($data);
+        //$I->CheckVariousData($data);
         $I->DisplayResponse($data); //This is response Time
-        // $data = $I->grabDataFromResponseByJsonPath('debug');
+        $I->seeResponseCodeIsSuccessful();
         $I->grabResponse();
-        $I->CheckResponseTimeEquals($data);
+        // $I->CheckResponseTimeEquals($data);
         // $I->CheckId();
         $I->seeResponseIsJson();
+        $I->seeResponseCodeIs(200);   
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
     }
 }
