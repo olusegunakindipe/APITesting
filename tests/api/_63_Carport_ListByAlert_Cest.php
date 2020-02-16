@@ -30,7 +30,9 @@ class _63_Carport_ListByAlert_Cest
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('check Carport alert data');
-        $I->CheckCarportAlertData($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data...ALERT_TIME');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CARPORT_ID');
+        // $I->CheckCarportAlertData($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
