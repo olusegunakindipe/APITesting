@@ -28,9 +28,13 @@ class _56_CarportListByMeter_Cest
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('See if the data are correct');
-        $I->CheckForValue($data);
+        // $I->CheckForValue($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data...ELECTRICITY_METER_SN');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->grabResponse();
-        $I->CheckResponseTimeEquals($data);
+        // $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
