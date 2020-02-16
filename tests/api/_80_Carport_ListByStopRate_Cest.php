@@ -26,7 +26,12 @@ class _80_Carport_ListByStopRate_Cest
         $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        $I->GetCarportListData($data);
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].RATE_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].BILLING_TYPE');
+        $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
+        $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
+        // $I->GetCarportListData($data);
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
