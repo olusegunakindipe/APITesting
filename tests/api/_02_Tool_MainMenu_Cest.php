@@ -19,10 +19,12 @@ class _02_Tool_MainMenu_Cest
             $I->haveHttpHeader('Content-Type','application/json');
             $I->sendGET('Tool/MainMenu');
             $data = $I->grabDataFromResponseByJsonPath('debug');
-            // $I->grabResponse();
             $I->DisplayResponse($data); //This is response Time
             $I->seeResponseContainsJson(array('time' => $data[0]['time']));
-            $I->CheckResponseTimeEquals($data);
+                // $I->CheckResponseTimeEquals($data);
+            $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+            $I->seeResponseJsonMatchesJsonPath('$.data[0].name');
+            $I->seeResponseJsonMatchesJsonPath('$.data[0].methods');
             $I->seeResponseIsJson();
             $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         }
