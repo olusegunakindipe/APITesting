@@ -29,13 +29,14 @@ class _35_Carport_Feedback_Cest
         $data = $I->sendGET($path);
         $I->haveHttpHeader('accept', 'application/json');
         $I->seeHttpHeader('Content-Type','application/json');
-        $I->dontSeeResponseCodeIs(401);
-        $I->getCarportFeebackData($data);
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        // $I->getCarportFeebackData($data);
         $I->DisplayResponse($data);
         $I->grabResponse();
-        $I->CheckResponseTimeEquals($data);
+        // $I->CheckResponseTimeEquals($data);
         // $I->CheckId();
         $I->seeResponseIsJson();
+        $I->seeResponseCodeIs(200); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
     }
 }
