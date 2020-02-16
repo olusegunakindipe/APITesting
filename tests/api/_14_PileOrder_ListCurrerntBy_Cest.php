@@ -25,9 +25,10 @@ class _14_PileOrder_ListCurrerntBy_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->grabResponse();
-        $I->CheckPresence($data);
+        // $I->CheckPresence($data);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
+        $I->dontSeeResponseCodeIs(404);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
