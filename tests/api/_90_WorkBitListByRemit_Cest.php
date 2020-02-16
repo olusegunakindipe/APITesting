@@ -26,7 +26,8 @@ class _90_WorkBitListByRemit_Cest
         $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        $I->CheckWorkBitList($data); 
+        // $I->CheckWorkBitList($data); 
+        $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
