@@ -30,7 +30,12 @@ class _54_Carport_ListByRefund_Cest
         $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        $I->CheckAccount($data);
+        // $I->CheckAccount($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].REFUND_ORDER_NO');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].USER_ID');
+        $I->dontSeeResponseContainsJson(['data' => 'invalid startDate']);
+        $I->dontSeeResponseContainsJson(['data' => 'Invalid endDate']);
+
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->seeResponseCodeIs(200);
