@@ -27,8 +27,11 @@ class _03_SearchES_StatGroup_Hq_Cest
         $I->DisplayResponse($data); //This is response Time
         $I->grabResponse();
         // $I->CheckId($data);
+        
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].value');
         $I->dontSeeResponseCodeIs(401);
-        $i->wantTo('Check if response returns Json');
+        $I->wantTo('Check if response returns Json');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);   
     }
