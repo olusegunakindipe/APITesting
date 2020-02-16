@@ -30,7 +30,9 @@ class _47_Order_GetRefund_Info_Cest
         $data = $I->sendGET($path);
         $I->haveHttpHeader('accept', 'application/json');
         $I->seeHttpHeader('Content-Type','application/json');
-        $I->getOrder($data);
+        // $I->getOrder($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.NUM');
+        $I->seeResponseJsonMatchesJsonPath('$.data.TOTAL_FEE');
         $I->dontSeeResponseContainsJson(['code' => 404]);
         $I->seeResponseCodeIs(200);
     }
