@@ -28,9 +28,12 @@ class _60_Carport_ListByDevice_Cest
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('See if the data are correct');
-        $I->CheckCarportDeviceData($data);
+        // $I->CheckCarportDeviceData($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ENTRANCE_GUARD_NAME');
+        $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
+        $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         $I->grabResponse();
-        $I->CheckResponseTimeEquals($data);
+        // $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
