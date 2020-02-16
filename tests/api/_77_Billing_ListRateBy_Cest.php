@@ -15,12 +15,20 @@ class _77_Billing_ListRateBy_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check if the some data are present in the API');
-        $data = $I->sendGET('/Billing/ListRateBy/1/20');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "/Billing/ListRateBy/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->TestBillingData($data);
-        $I->seeResponseContainsJson(['total' => 1137, 'pageTotal'=>57]);
         $I->seeResponseIsJson(); 
+        $I->dontseeResponseCodeIs(401);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
 }
