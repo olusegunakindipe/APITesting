@@ -24,11 +24,11 @@ class _12_FlatComplex_ListByWhite_Cest
         $api = "FlatComplex/ListByWhite/";
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
-    //  $data = $I->grabDataFromResponseByJsonPath('debug');
         $I->DisplayResponse($data);
         $I->grabResponse();
-        $I->CheckFlatCoplexListBy($data);
-        $I->dontseeResponseCodeIs(401);
+        $I->seeResponseContains('data');
+        // $I->CheckFlatCoplexListBy($data);
+        $I->dontseeResponseCodeIs(404);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
