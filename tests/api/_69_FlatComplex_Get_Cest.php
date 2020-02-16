@@ -25,7 +25,7 @@ class _69_FlatComplex_Get_Cest
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->DisplayResponse($data);
         $I->dontSeeResponseCodeIs(401);
-        $I->GetFlatComplexData($data);
+        // $I->GetFlatComplexData($data);
         $I->SeeResponseMatchesJsonType(['data' => 
             [
                 'CELL_ID'=> 'string',
