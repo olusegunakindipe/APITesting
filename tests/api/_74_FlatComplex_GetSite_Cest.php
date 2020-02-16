@@ -24,7 +24,7 @@ class _74_FlatComplex_GetSite_Cest
         $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        $I->GetProperty($data);
+        // $I->GetProperty($data);
         $I->seeResponseMatchesJsonType([
             'data' => [
                 'SITE_ID' => 'string',
