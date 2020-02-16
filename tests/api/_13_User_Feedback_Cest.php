@@ -30,11 +30,12 @@ class _13_User_Feedback_Cest
         $data = $I->sendGET($path);
         $I->haveHttpHeader('accept', 'application/json');
         $I->seeHttpHeader('Content-Type','application/json');        
-        $I->TestForUserFeedbackData($data);
+        // $I->TestForUserFeedbackData($data);
         $I->dontSeeResponseCodeIs(401);
         $I->DisplayResponse($data);
         $I->grabResponse();
-        $I->CheckResponseTimeEquals($data);
+        $I->dontSeeResponseMatchesJsonType(['id' => 'integer'], '$.data.data[0]');
+        // $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
