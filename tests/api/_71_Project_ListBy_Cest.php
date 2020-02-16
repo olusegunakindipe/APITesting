@@ -11,7 +11,7 @@ class _71_Project_ListBy_Cest
     {
     }
 
-    public function PropertyListBy(ApiTester $I)
+    public function ProjectListBy(ApiTester $I)
     {
         $I->AdminLogin();
         $I->wantTo('Check if the some data are present in the API');
@@ -28,7 +28,6 @@ class _71_Project_ListBy_Cest
         $I->DisplayResponse($data);
         $I->checkForData($data);
         $I->wantTo('check if the data corresponds');
-        $I->checkPropertyData($data);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
