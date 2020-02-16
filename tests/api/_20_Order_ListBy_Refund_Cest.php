@@ -31,11 +31,11 @@ class _20_Order_ListBy_Refund_Cest
         $I->seeHttpHeader('Content-Type','application/json');
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->wantTo('get if data is accurate as specified on the Api');
-        $I->CheckRefundNos($data);
+        // $I->CheckRefundNos($data);
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);
         $I->seeResponseIsJson();
-        $I->dontSeeResponseCodeIs(401);
+        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->seeResponseCodeIs(200); 
     }
 }
