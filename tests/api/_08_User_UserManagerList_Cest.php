@@ -30,7 +30,9 @@ class _08_User_UserManagerList_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->DisplayResponse($data); //This is response Time
-        $I->checkUserManagerData($data);
+        // $I->checkUserManagerData($data);
+        $id = $I->grabDataFromResponseByJsonPath('$.data.data[1].USER_ID');
+        echo 'Check userId: ',print_r($id);
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
