@@ -25,8 +25,8 @@ class _22_Meter_ListBy_Cest
         $data = $I->sendGET($path);
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);
-        $I->wantTo('Check for Data and also the page numbers');
-        $I->CheckDataPageNumbers($data);
+        $I->wantTo('Check for response data');
+        // $I->CheckDataPageNumbers($data);
         $I->dontSeeResponseCodeIs(401);      
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
