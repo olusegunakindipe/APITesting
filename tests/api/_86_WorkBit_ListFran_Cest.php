@@ -15,21 +15,27 @@ class _86_WorkBit_ListFran_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check if the some data are present in the API');
-        $data = $I->sendGET('/WorkBit/ListByBisFran/1/20');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "/WorkBit/ListByBisFran/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->dontSeeResponseMatchesJsonType([
             'data' => [
                 'FRAN_TYPE_NO' => 'string',
-                'BI_ID' => 'integer',
-                'NAME' => 'string|null',
-                'FRAN_COST' => 'string',
-                'CREATE_TIME' => 'string',
+                'BI_ID' => 'null',
+                'NAME' => 'integer|null',
+                'FRAN_COST' => 'null',
+                'CREATE_TIME' => 'null',
                 'FRAN_CHARGE' => 'float'
             ]
         ]);
-        $I->seeResponseContainsJson(['total' => 456, 'pageTotal'=>23]);
-        $I->seeResponseContainsJson(['FRAN_COST' => '首年50% 、次年50%']);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
