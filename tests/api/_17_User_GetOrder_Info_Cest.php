@@ -28,7 +28,8 @@ class _17_User_GetOrder_Info_Cest
         $I->seeHttpHeader('Content-Type','application/json');
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->wantTo('get if data is accurate as specified on the Api');
-        $I->CheckDataIsCorrect($data);
+        // $I->CheckDataIsCorrect($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data');
         $I->grabResponse();
         $I->DisplayResponse($data);
         $I->seeResponseIsJson();
