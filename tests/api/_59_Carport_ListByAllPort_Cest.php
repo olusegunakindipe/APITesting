@@ -28,8 +28,12 @@ class _59_Carport_ListByAllPort_Cest
         $I->wantTo('Print response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('check if the data corresponds');
-        $I->CheckAllDeviceData($data);
+        // $I->CheckAllDeviceData($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CELL_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CARPORT_NAME');
         $I->grabResponse();
+        $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
