@@ -34,9 +34,11 @@ class _18_User_Balance_LogCest
         print_r($data[0]['time']);
         echo "Peak Time:"; 
         print_r($data[0]['peak']); //This is the peak time
-        $I->CheckResponseTimeEquals($data);
-        $I->CheckUsereBalanceData($data);
-        $I->CheckResponseTimeEquals($data);
+        // // $I->CheckResponseTimeEquals($data);
+        // // $I->CheckUsereBalanceData($data);
+        // $I->CheckResponseTimeEquals($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data...USER_ID');
+        $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
