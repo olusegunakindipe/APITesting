@@ -27,7 +27,12 @@ class _89_WorkBit_ListAcoount_Cest
         $data = $I->sendGET('/WorkBit/ListByAccount/1/20');
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        $I->TestAccountList($data);
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ACCOUNT_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].NAME');
+        // $I->TestAccountList($data);
+        $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
+        $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         $I->dontSeeResponseCodeIs(401); 
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 
