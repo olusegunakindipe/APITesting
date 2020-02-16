@@ -36,7 +36,7 @@ class _68_Property_GetById_Cest
                 "SALT" => 'null'
             ]
         ]);
-        $I->SeeResponseContainsJson(['code' => 200]);
+        $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
