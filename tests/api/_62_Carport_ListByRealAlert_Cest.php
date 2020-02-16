@@ -26,8 +26,12 @@ class _62_Carport_ListByRealAlert_Cest
         $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        $I->wantTo('check if the data is not empty');
-        $I->checkCarportList($data);
+        $I->wantTo('check if the data is present');
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ALERT_TIME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].DEVICE_SN');
+        // $I->checkCarportList($data);
+        $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
