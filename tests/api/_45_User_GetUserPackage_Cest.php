@@ -30,7 +30,9 @@ class _45_User_GetUserPackage_Cest
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->grabResponse();
-        $I->CheckResponseTimeEquals($data);
+        // $I->CheckResponseTimeEquals($data);
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->dontSeeResponseContainsJson(['data' => 'Invalid pageSize']);
         $I->wantTo('check if data returned json');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
