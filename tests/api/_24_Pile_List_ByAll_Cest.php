@@ -25,8 +25,9 @@ class _24_Pile_List_ByAll_Cest
         $data = $I->sendGET($path);
         $I->DisplayResponse($data);
         $I->seeResponseIsJson();
-        $I->CheckResponseTimeEquals($data);
-        $I->dontSeeResponseCodeIs(400);
+        // $I->CheckResponseTimeEquals($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CHARGING_PILE_SN');
+        $I->dontSeeResponseCodeIs(404);
         $I->seeResponseCodeIs(200);
     }
 
