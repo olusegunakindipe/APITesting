@@ -15,12 +15,19 @@ class _78_Billing_GetRate_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check if the some data are present in the API');
-        $data = $I->sendGET('/Billing/GetRate/1682');
+        $id = 1682;
+        $urlParams = [
+            $id
+        ];
+        $api = "/Billing/GetRate/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('Get the data');
         $I->GetBillingDataRate($data);
         $I->seeResponseIsJson(); 
+        $I->dontseeResponseCodeIs(401);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
 }
