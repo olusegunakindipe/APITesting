@@ -28,8 +28,10 @@ class _39_Package_UserStopListBy_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->DisplayResponse($data);
-        $I->CheckResponseTimeEquals($data);
-        $I->CheckCarportChargeData($data);
+        // $I->CheckResponseTimeEquals($data);
+        // $I->CheckCarportChargeData($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].PACKAGE_ORDER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].USER_ID');
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
