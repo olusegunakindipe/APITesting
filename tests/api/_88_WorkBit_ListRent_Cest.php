@@ -18,15 +18,7 @@ class _88_WorkBit_ListRent_Cest
         $data = $I->sendGET('/WorkBit/ListByBisRent/1/20');
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        $I->seeResponseContainsJson([
-            'RENT_NO'=> 'RU165604840858223616',
-            'TYPE' => 0,
-            'RENT_PRICE' => '3.0000',
-            'RENT_NUM' => 9394,
-            'PAY_FEE' => '28182.0000',
-            'CREATE_TIME'=> '2020-01-02 22:18:03'
-        ]);
-        $I->seeResponseContainsJson(['total' => 50, 'pageTotal'=>3]);
+        $I->TestWorkBitListRent($data);
         $I->dontSeeResponseCodeIs(401); 
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 
