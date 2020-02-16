@@ -33,7 +33,7 @@ class _91_User_GetBalanceCest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].PAY_FEE');
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
-        $I->CheckResponseTimeEquals($data);
+        // $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
