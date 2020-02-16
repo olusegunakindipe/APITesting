@@ -20,8 +20,7 @@ class _10_Province_ListAll_Cest
         $data = $I->sendGET('Province/ListAll');        
         $I->DisplayResponse($data);
         $I->grabResponse();
-        $I->CheckResponseTimeEquals($data);
-        // $I->CheckId();
+        $I->seeResponseJsonMatchesJsonPath('$.data...DISTRICT_CODE');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
     }
