@@ -24,8 +24,9 @@ class _29_Alert_ListByRealAlert_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->DisplayResponse($data);
-        $I->checkInfoListData($data);
-        $I->CheckResponseTimeEquals($data);
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        // $I->checkInfoListData($data);
+        // $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
