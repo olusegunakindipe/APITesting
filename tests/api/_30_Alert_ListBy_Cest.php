@@ -28,9 +28,12 @@ class _30_Alert_ListBy_Cest
         $api = "/Alert/ListBy/";
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
-        $I->wantTo('check Info about the response and peak Time');
+        $I->wantTo('check Info about the response Time');
         $I->DisplayResponse($data);
-        $I->AlertTime($data);
+        // $I->AlertTime($data);
+        $I->wantTo('check if response contains data');
+        $I->seeResponseJsonMatchesJsonPath('$.data...ALERT_TIME');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
         $I->seeResponseIsJson();
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
