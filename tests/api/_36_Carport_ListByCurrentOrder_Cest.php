@@ -26,7 +26,8 @@ class _36_Carport_ListByCurrentOrder_Cest
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);
-        $I->CheckUserAndCharge($data);
+        // $I->CheckUserAndCharge($data);
+        $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
