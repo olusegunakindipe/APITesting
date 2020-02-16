@@ -26,7 +26,9 @@ class _03_SearchES_StatGroup_Hq_Cest
         $I->wantTo('print response Time for this Api');
         $I->DisplayResponse($data); //This is response Time
         $I->grabResponse();
-        $I->CheckId($data);
+        // $I->CheckId($data);
+        $I->dontSeeResponseCodeIs(401);
+        $i->wantTo('Check if response returns Json');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);   
     }
