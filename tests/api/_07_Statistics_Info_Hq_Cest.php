@@ -17,9 +17,10 @@ class _07_Statistics_Info_Hq_Cest
         $data = $I->sendGET('/Statistics/Info/hq/top');
         $I->DisplayResponse($data);
         $I->wantTo('see if data is the List');
-        $I->CheckInfoList($data);
+        // $I->CheckInfoList($data);
         $I->grabResponse();
-        $I->CheckResponseTimeEquals($data);
+        // $I->CheckResponseTimeEquals($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data');
         // $I->CheckId();
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
