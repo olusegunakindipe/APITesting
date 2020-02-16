@@ -29,7 +29,7 @@ class _25_Pile_Serach_By_Useless__Cest
         echo "Total number:";
         print_r($datas[0]['pageInfo']['total']);
         $I->seeResponseIsJson();
-        $I->CheckResponseTimeEquals($data);
+        // $I->CheckResponseTimeEquals($data);
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(200);
         
