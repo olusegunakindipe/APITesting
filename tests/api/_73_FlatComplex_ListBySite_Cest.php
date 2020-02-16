@@ -26,7 +26,10 @@ class _73_FlatComplex_ListBySite_Cest
         $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        $I->GetFlatComplexSiteList($data);
+        $I->dontSeeResponseContainsJson(['code' => 401]);
+        // $I->GetFlatComplexSiteList($data);
+        $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
+        $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
