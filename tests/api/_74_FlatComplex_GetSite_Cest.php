@@ -15,15 +15,22 @@ class _74_FlatComplex_GetSite_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check if the some data are present in the API');
-        $data = $I->sendGET('/FlatComplex/GetSite/341881000120200117113317');
+        $id ='341881000120200117113317';
+        $urlParams = [
+            $id
+        ];
+        $api = "/FlatComplex/GetSite/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        $I->seeResponseContainsJson([
-            'ID' => '1818',  
-            'CELL_ID' => '3418810001',
-             "GPS_LAT" => "30.6335733000",
-            "CELL_DISTRICT_CODE" => "341881",
-            'GPS_LNG' => '118.9829850000',
+        $I->GetProperty($data);
+        $I->seeResponseMatchesJsonType([
+            'data' => [
+                'SITE_ID' => 'string',
+                'CELL_EMAIL' => 'string|null',
+                'CELL_ID' => 'string'
+            ]
         ]);
         $I->seeResponseIsJson(); 
         $I->dontSeeResponseCodeIs(401);
