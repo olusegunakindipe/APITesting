@@ -27,7 +27,11 @@ class _65_Property_ListBy_Cest
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('check if the data is present');
-        $I->checkPropertyData($data);
+        // $I->checkPropertyData($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data...PROPERTY_ID');
+        $I->dontSeeResponseContainsJson(['code' => 401]);
+        $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
+        $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
