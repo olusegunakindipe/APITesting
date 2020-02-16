@@ -26,6 +26,8 @@ class _83_Carport_SearchByChargePackage_Cest
         $I->DisplayResponse($data);
         $I->wantTo('Get json response');
         // $I->GetCarportSearch($data);
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->dontSeeResponseContainsJson(['data' => 'invalid argument']);
         $I->seeResponseIsJson(); 
         $I->dontSeeResponseCodeIs(401); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
