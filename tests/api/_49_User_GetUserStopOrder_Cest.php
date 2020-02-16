@@ -27,9 +27,9 @@ class _49_User_GetUserStopOrder_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->DisplayResponse($data);
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         // $I->CheckUserStopPackage($data);
         $I->dontSeeResponseCodeIs(404);
-        $I->seeResponseIsJson();
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
