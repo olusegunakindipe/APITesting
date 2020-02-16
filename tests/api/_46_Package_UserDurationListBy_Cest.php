@@ -19,8 +19,9 @@ class _46_Package_UserDurationListBy_Cest
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
-        $I->getPackageUserData($data);
-        $I->CheckResponseTimeEquals($data);
+        // $I->getPackageUserData($data);
+        // $I->CheckResponseTimeEquals($data);
+        $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
