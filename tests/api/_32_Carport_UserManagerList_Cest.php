@@ -28,8 +28,10 @@ class _32_Carport_UserManagerList_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->DisplayResponse($data);
-        $I->GetUserManagerList($data);
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        // $I->GetUserManagerList($data);
+        $I->seeResponseCodeIs(200);
+        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
         $I->seeResponseIsJson();
-        $I->seeResponseCodeIs(200); 
     }
 }
