@@ -24,7 +24,6 @@ class _75_Carport_ListByFlatComplex_Cest
         $api = "/Carport/ListByFlatComplex/";
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
-
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->CheckTestData($data);
