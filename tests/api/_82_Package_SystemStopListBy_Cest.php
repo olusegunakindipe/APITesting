@@ -15,7 +15,15 @@ class _82_Package_SystemStopListBy_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check data are correct');
-        $data = $I->sendGET('/Package/SystemStopListBy/1/20');
+        $page = 1;
+        $size = 20;
+        $urlParams = [
+            $page,
+            $size
+        ];
+        $api = "/Package/SystemStopListBy/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('Get response time');
         $I->DisplayResponse($data);
         $I->TestPackageSystemStop($data);
