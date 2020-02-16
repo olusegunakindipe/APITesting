@@ -18,8 +18,9 @@ class _28_Meter_SearchByAll_Cest
         $data = $I->sendGET('Meter/SearchByAll');
         $I->DisplayResponse($data);
         $I->wantTo('Check if the specific elctricity number is included in the list');
-        $I->CheckForElectricityNo($data);
-        $I->CheckResponseTimeEquals($data);
+        $I->seeResponseJsonMatchesJsonPath('$data[0].ELECTRICITY_METER_SN');
+        // $I->CheckForElectricityNo($data);
+        // $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
