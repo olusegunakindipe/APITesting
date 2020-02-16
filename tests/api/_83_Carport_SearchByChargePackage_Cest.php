@@ -15,11 +15,17 @@ class _83_Carport_SearchByChargePackage_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check if the some data are present in the API');
-        $data = $I->sendGET('/Carport/SearchByChargePackage/350104000320190411095938');
+        $id = '350104000320190411095938';
+        $urlParams = [
+            $id
+        ];
+        $api = "/Carport/SearchByChargePackage/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        $I->wantTo('Get search data');
-        $I->getCarportSearch($data);
+        $I->wantTo('Get json response');
+        // $I->GetCarportSearch($data);
         $I->seeResponseIsJson(); 
         $I->dontSeeResponseCodeIs(401); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
