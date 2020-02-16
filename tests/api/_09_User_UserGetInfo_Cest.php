@@ -25,9 +25,11 @@ class _09_User_UserGetInfo_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->grabResponse();
-        $I->CheckDetail($data);
+        // $I->CheckDetail($data);
         $I->DisplayResponse($data);
+        $I->seeResponseJsonMatchesJsonPath('$..data');
         $I->seeResponseIsJson();
+        $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
     }
 }
