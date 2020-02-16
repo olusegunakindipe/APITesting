@@ -26,8 +26,12 @@ class _64_Agent_ListBy_Cest
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('check Agent list data');
-        $I->checkAgentData($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].AGENT_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].AGENT_TYPE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].AGENT_ACCOUNT');
+        // $I->checkAgentData($data);
         $I->dontSeeResponseCodeIs(401);
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
