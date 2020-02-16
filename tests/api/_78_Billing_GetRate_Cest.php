@@ -25,7 +25,9 @@ class _78_Billing_GetRate_Cest
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('Get the data');
-        $I->GetBillingDataRate($data);
+        // $I->GetBillingDataRate($data);
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data.rate[0].CELL_ID');
         $I->seeResponseIsJson(); 
         $I->dontseeResponseCodeIs(401);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
