@@ -24,7 +24,7 @@ class _27_Hq_Info_Cest
             'province' => 'array',
             'num_site' => 'string']
         ]);
-        $I->CheckResponseTimeEquals($data);
+        // $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
         
