@@ -16,11 +16,12 @@ class _23_Meter_SearchBy_Useless_Cest
         $I->AdminLogin();
         $I->wantTo('test the values of fields in this api');
         $data = $I->sendGET('Meter/SearchByUseless');
-        // $I->grabResponse();
+        $I->grabResponse();
         $I->DisplayResponse($data);
-        $I->SearchByData($data);
-        $I->dontSeeResponseCodeIs(401);
+        // $I->SearchByData($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data...ELECTRICITY_METER_SN');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
+        $I->dontSeeResponseCodeIs(404);
     }
 }
