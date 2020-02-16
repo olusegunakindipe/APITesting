@@ -26,8 +26,13 @@ class _91_User_GetBalanceCest
         $data = $I->sendGET($fullPath);
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);;
-        // dont use hard code to check data.
         // $I->getOrderListData($data);
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].WITHDRAW_NO');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].WITHDRAW_FEE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].PAY_FEE');
+        $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
+        $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
