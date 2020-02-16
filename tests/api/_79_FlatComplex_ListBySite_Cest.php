@@ -15,11 +15,18 @@ class _79_FlatComplex_ListBySite_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check if the some data are present in the API');
-        $data = $I->sendGET('/FlatComplex/ListBySiteByCell/3505050019');
+        $id = '3505050019';
+        $urlParams = [
+            $id
+        ];
+        $api = "/FlatComplex/ListBySiteByCell/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->FlatComplexData($data);
         $I->seeResponseIsJson(); 
+        $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
 }
