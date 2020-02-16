@@ -29,6 +29,7 @@ class _43_User_GetUserBalanceRecord_Cest
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('check if response is in Json');
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         // $I->getUserBalanceData($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
