@@ -17,7 +17,9 @@ class _34_Carport_ListByAll_Cest
         $data = $I->sendGET('Carport/ListByAll');
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        $I->CheckValueIsOk($data);
+        // $I->CheckValueIsOk($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].CARPORT_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].CARPORT_NAME');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
