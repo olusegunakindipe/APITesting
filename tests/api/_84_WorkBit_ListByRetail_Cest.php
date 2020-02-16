@@ -28,7 +28,11 @@ class _84_WorkBit_ListByRetail_Cest
         $I->DisplayResponse($data);
         $I->grabResponse();
         $I->dontSeeResponseCodeIs(401);
-        $I->TestWorkBitRetailData($data);
+        // $I->TestWorkBitRetailData($data);
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].BI_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].SPLIT_TYPE');
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
