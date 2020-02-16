@@ -29,7 +29,8 @@ class _21_FlatComplex_ListByAll_Device_Cest
         echo "Response Time is:";
         print_r($data[0]['time']);
         $I->wantTo('Check if data is contained in json');
-        $I->DataInJson($data);
+        // $I->DataInJson($data);
+        $I->dontSeeResponseCodeIs(404);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
