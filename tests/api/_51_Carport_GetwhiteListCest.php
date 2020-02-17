@@ -14,7 +14,7 @@ class _51_Carport_GetwhiteListCest
     public function CarportGetWhiteList(ApiTester $I)
     {
         $I->AdminLogin();
-        $I->wantTo('check if data is in the API');
+        $I->wantTo('check json data presence');
         $id = 23;
         $urlParams = [
             $id

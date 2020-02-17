@@ -24,7 +24,6 @@ class _79_FlatComplex_ListBySite_Cest
         $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        // $I->FlatComplexData($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data[0].SITE_ID');
         $I->seeResponseIsJson(); 

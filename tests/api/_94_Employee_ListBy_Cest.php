@@ -25,7 +25,6 @@ class _94_Employee_ListBy_Cest
         $data = $I->sendGET($path);
         $I->DisplayResponse($data);
         $I->seeResponseIsJson();
-        // $I->CheckResponseTimeEquals($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].EMPLOYEE_ID');
         $I->dontSeeResponseCodeIs(404);

@@ -27,7 +27,6 @@ class _81_Package_SystemDuration_Cest
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
-        // $I->TestPackageData($data);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].PACKAGE_ID');
         $I->seeResponseIsJson(); 
         $I->dontSeeResponseCodeIs(401); 

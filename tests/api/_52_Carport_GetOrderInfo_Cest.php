@@ -33,7 +33,7 @@ class _52_Carport_GetOrderInfo_Cest
             'validRatio' => 'string'
             ]
         ]);
-        $I->dontSeeResponseContainsJson(['code' => '401']);
+        $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }

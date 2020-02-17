@@ -26,7 +26,6 @@ class _71_Project_ListBy_Cest
         $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        // $I->checkForData($data);
         $I->wantTo('check if the data corresponds');  
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CONTRACT_CODE');

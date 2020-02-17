@@ -26,7 +26,6 @@ class _88_WorkBit_ListRent_Cest
         $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        // $I->TestWorkBitListRent($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data...NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data...BIS_ID');

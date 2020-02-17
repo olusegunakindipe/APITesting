@@ -14,7 +14,7 @@ class _05_SearchES_Query_Cest
     Public function SearchES(ApiTester $I) {
 
         $I->AdminLogin();
-        $I->wantTo('Get the Search Query data');
+        $I->wantTo('Get the Search Query Sata');
         $name="%E4%B8%AD%E6%B0%B4";
         $type = "flatComplex";
         $role = 'hq';

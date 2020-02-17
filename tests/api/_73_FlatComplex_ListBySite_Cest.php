@@ -27,7 +27,6 @@ class _73_FlatComplex_ListBySite_Cest
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->dontSeeResponseContainsJson(['code' => 401]);
-        // $I->GetFlatComplexSiteList($data);
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         $I->seeResponseIsJson();

@@ -26,7 +26,6 @@ class _77_Billing_ListRateBy_Cest
         $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        // $I->TestBillingData($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseIsJson(); 
         $I->dontseeResponseCodeIs(401);

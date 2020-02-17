@@ -29,7 +29,6 @@ class _95_CardListByAll_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...CARD_NO');
         $I->seeResponseJsonMatchesJsonPath('$.data...USER_ID');
         $I->dontSeeResponseContainsJson(['data' => 'invalid currentPage']);
-        // $I->TestPackageSystemStop($data);
         $I->seeResponseIsJson(); 
         $I->dontSeeResponseCodeIs(401); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

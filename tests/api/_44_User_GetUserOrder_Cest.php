@@ -29,7 +29,6 @@ class _44_User_GetUserOrder_Cest
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('check if the data returned json');
-        // $I->GetUserData($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->dontSeeResponseContainsJson(['data' => 'Invalid currenpage']);
         $I->dontSeeResponseContainsJson(['data' => 'Invalid pageSize']);

@@ -14,7 +14,7 @@ class _83_Carport_SearchByChargePackage_Cest
     public function CarportSearchBy(ApiTester $I)
     {
         $I->AdminLogin();
-        $I->wantTo('Check if the some data are present in the Api');
+        $I->wantTo('Check if data are present in the fata');
         $id = '350104000320190411095938';
         $urlParams = [
             $id
@@ -25,7 +25,6 @@ class _83_Carport_SearchByChargePackage_Cest
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('Get json response');
-        // $I->GetCarportSearch($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid argument']);
         $I->seeResponseIsJson(); 

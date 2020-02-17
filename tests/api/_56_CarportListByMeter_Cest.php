@@ -34,7 +34,6 @@ class _56_CarportListByMeter_Cest
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->grabResponse();
-        // $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }

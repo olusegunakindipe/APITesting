@@ -23,7 +23,7 @@ class _96_Info_GetUser_List_Cest
             ]
         );
         $data = $I->grabDataFromResponseByJsonPath('debug');
-        $I->DisplayResponse($data); //This is response Time
+        $I->DisplayResponse($data); //Response Time
         $I->seeResponseContainsJson(array('time' => $data[0]['time']));
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->dontSeeResponseContainsJson(['code' => 401]);

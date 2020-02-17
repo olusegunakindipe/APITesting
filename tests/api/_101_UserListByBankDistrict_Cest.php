@@ -30,7 +30,6 @@ class _101_UserListByBankDistrict_Cest
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
-
     }
 }
 

@@ -20,7 +20,6 @@ class _92_WorkBit_GetWithDrawFee_Cest
         $data = $I->grabDataFromResponseByJsonPath('debug');
         $I->DisplayResponse($data); //This is response Time
         $I->seeResponseContainsJson(array('time' => $data[0]['time']));
-            // $I->CheckResponseTimeEquals($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.agingFee');
         $I->seeResponseJsonMatchesJsonPath('$.data.totalFee');

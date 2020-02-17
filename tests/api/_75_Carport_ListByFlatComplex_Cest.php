@@ -28,7 +28,6 @@ class _75_Carport_ListByFlatComplex_Cest
         $I->DisplayResponse($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_ID');
-        // $I->CheckTestData($data);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }

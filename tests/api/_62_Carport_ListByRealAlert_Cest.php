@@ -30,7 +30,6 @@ class _62_Carport_ListByRealAlert_Cest
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ALERT_TIME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].DEVICE_SN');
-        // $I->checkCarportList($data);
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 

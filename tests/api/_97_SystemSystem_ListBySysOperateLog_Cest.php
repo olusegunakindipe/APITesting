@@ -30,7 +30,6 @@ class _97_SystemSystem_ListBySysOperateLog_Cest
         $data = $I->sendGET($path);
         $I->haveHttpHeader('accept', 'application/json');
         $I->seeHttpHeader('Content-Type','application/json');
-        // $I->getOrder($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].OPERATION_ACCOUNT');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].DIRECTORY_NAME');

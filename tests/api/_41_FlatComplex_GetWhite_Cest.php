@@ -24,7 +24,6 @@ class _41_FlatComplex_GetWhite_Cest
         $data = $I->sendGET($path);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->DisplayResponse($data);
-        // $I->CheckDataFlatComplex($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);

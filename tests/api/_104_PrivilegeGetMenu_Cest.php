@@ -21,7 +21,7 @@ class _104_PrivilegeGetMenu_Cest
         $api = "/Privilege/GetMenuPrivilege/hq/";
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
-        $I->DisplayResponse($data); //This is response Time
+        $I->DisplayResponse($data); 
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->dontSeeResponseCodeIs(401);
         $I->DisplayResponse($data);
