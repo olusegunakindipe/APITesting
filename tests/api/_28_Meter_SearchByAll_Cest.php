@@ -21,7 +21,7 @@ class _28_Meter_SearchByAll_Cest
         $I->seeResponseJsonMatchesJsonPath('$data[0].ELECTRICITY_METER_SN');
         // $I->CheckForElectricityNo($data);
         // $I->CheckResponseTimeEquals($data);
-        $I->seeResponseIsJson();
+        $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(200); 
     }
 }

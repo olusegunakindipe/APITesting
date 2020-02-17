@@ -23,7 +23,7 @@ class _102__User_ListByBankNo_Cest
                 "city" => "天津市",
                 "bank" => "中国农业银行"       ]);
         $data = $I->grabDataFromResponseByJsonPath('debug');
-        $I->DisplayResponse($data); //Display response time
+        $I->DisplayResponse($data); //This is response Time
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data[0].BANK_BRANCH');
         $I->seeResponseJsonMatchesJsonPath('$.data[0].LINE_NUMBER');

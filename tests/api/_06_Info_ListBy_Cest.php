@@ -35,7 +35,6 @@ class _06_Info_ListBy_Cest
         // $I->CheckNumber($data);
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseContains('data');
-        // $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
     }

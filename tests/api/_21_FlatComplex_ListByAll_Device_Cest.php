@@ -31,7 +31,6 @@ class _21_FlatComplex_ListByAll_Device_Cest
         $I->wantTo('Check if data is contained in json');
         // $I->DataInJson($data);
         $I->dontSeeResponseCodeIs(404);
-        $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
 }

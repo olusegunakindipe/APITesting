@@ -34,7 +34,6 @@ class _30_Alert_ListBy_Cest
         $I->wantTo('check if response contains data');
         $I->seeResponseJsonMatchesJsonPath('$.data...ALERT_TIME');
         $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
-        $I->seeResponseIsJson();
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }

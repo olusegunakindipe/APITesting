@@ -34,9 +34,12 @@ class _37_Carport_ListByChargeHistory_Top_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CHARGE_ORDER_ID');
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
+
         // $I->CheckCarportChargeHistory($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
+        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
+
     }
         
 }

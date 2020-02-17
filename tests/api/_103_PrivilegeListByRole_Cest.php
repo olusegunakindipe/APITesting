@@ -29,7 +29,7 @@ class _103_PrivilegeListByRole_Cest
         $path = sprintf("?sort=%s&orderBy=%s", $sort,$orderBy);
         $fullpath .= $path;
         $data = $I->sendGET($fullpath);
-        $I->DisplayResponse($data); //Display response time
+        $I->DisplayResponse($data); //This is response Time
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();

@@ -31,6 +31,7 @@ class _80_Carport_ListByStopRate_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].BILLING_TYPE');
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
+        // $I->GetCarportListData($data);
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

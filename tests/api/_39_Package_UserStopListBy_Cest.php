@@ -33,9 +33,8 @@ class _39_Package_UserStopListBy_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].PACKAGE_ORDER_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].USER_ID');
         $I->dontSeeResponseCodeIs(401);
-        $I->seeResponseIsJson();
+         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
-    }
-        
+    }  
 
 }

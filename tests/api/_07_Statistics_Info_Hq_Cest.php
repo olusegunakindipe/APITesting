@@ -21,8 +21,6 @@ class _07_Statistics_Info_Hq_Cest
         $I->grabResponse();
         // $I->CheckResponseTimeEquals($data);
         $I->seeResponseJsonMatchesJsonPath('$.data');
-        // $I->CheckId();
-        $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
     }
 }

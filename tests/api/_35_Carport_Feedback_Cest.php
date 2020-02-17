@@ -33,7 +33,9 @@ class _35_Carport_Feedback_Cest
         // $I->getCarportFeebackData($data);
         $I->DisplayResponse($data);
         $I->grabResponse();
-        $I->seeResponseIsJson();
+        // $I->CheckResponseTimeEquals($data);
+        // $I->CheckId();
+        $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(200); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
     }

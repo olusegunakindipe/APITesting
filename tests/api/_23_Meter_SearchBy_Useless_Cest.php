@@ -21,7 +21,6 @@ class _23_Meter_SearchBy_Useless_Cest
         // $I->SearchByData($data);
         $I->seeResponseJsonMatchesJsonPath('$.data...ELECTRICITY_METER_SN');
         $I->seeResponseIsJson();
-        $I->seeResponseCodeIs(200);
         $I->dontSeeResponseCodeIs(404);
     }
 }

@@ -30,6 +30,7 @@ class _89_WorkBit_ListAcoount_Cest
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ACCOUNT_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].NAME');
+        // $I->TestAccountList($data);
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         $I->dontSeeResponseCodeIs(401); 

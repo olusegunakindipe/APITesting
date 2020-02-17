@@ -14,7 +14,7 @@ class _84_WorkBit_ListByRetail_Cest
     public function WorkBitListRetail(ApiTester $I)
     {
         $I->AdminLogin();
-        $I->wantTo('Check data presence in the API');
+        $I->wantTo('Check if the some data are present in the API');
         $page = 1;
         $size = 20;
         $urlParams = [
@@ -28,6 +28,7 @@ class _84_WorkBit_ListByRetail_Cest
         $I->DisplayResponse($data);
         $I->grabResponse();
         $I->dontSeeResponseCodeIs(401);
+        // $I->TestWorkBitRetailData($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].BI_ID');

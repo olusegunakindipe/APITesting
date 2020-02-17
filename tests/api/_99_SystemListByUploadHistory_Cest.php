@@ -26,6 +26,7 @@ class _99_SystemListByUploadHistory_Cest
         $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
+        // $I->TestWorkBitListRent($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data...CREATE_ACCOUNT');
         $I->seeResponseJsonMatchesJsonPath('$.data...UPLOAD_TIME');

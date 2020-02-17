@@ -28,6 +28,7 @@ class _53_Carport_ListByRechange_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
+        // $I->CarportList($data);
         $I->DisplayResponse($data);
         $I->wantTo('check if the correctness of data');
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);

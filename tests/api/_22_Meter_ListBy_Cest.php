@@ -28,7 +28,6 @@ class _22_Meter_ListBy_Cest
         $I->wantTo('Check for response data');
         // $I->CheckDataPageNumbers($data);
         $I->dontSeeResponseCodeIs(401);      
-        $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
 }

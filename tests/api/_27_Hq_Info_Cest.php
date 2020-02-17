@@ -26,6 +26,7 @@ class _27_Hq_Info_Cest
         ]);
         // $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
+        $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(200);
         
     }

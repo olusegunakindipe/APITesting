@@ -28,7 +28,6 @@ class _15_Order_ListBy_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->wantTo('Check response Time for this Api');
-        // $I->checkOrderListData($data);
         $I->DisplayResponse($data);
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();

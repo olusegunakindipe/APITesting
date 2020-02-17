@@ -29,7 +29,6 @@ class _26_FlatComplex_ListAllPort_Cest
         $I->DisplayResponse($data);
         $I->wantTo('check if the data are of specfic value');
         // $I->checkFlatComplexListData($data);
-        $I->seeResponseIsJson();
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(200);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

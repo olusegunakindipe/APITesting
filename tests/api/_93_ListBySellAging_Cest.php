@@ -25,6 +25,7 @@ class _93_ListBySellAging_Cest
         $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
+        // $I->TestWorkBitListRent($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data...AGING_TIME');
         $I->seeResponseJsonMatchesJsonPath('$.data...AGING_FEE');

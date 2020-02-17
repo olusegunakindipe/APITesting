@@ -24,7 +24,6 @@ class _24_Pile_List_ByAll_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->DisplayResponse($data);
-        $I->seeResponseIsJson();
         // $I->CheckResponseTimeEquals($data);
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CHARGING_PILE_SN');
         $I->dontSeeResponseCodeIs(404);

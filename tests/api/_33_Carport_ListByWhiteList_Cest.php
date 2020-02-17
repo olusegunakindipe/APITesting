@@ -13,7 +13,7 @@ class _33_Carport_ListByWhiteList_Cest
     public function CarportListByWhite(ApiTester $I)
     {
         $I->AdminLogin();
-        $I->wantTo('Check data are correctly stored');
+        $I->wantTo('Check if the data are correctly stored');
         $page = 1;
         $size = 20;
         $urlParams = [
@@ -28,7 +28,7 @@ class _33_Carport_ListByWhiteList_Cest
         // $I->CheckCarportListData($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].model_no');
-        $I->seeResponseIsJson();
+        $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(200); 
     }
 }
