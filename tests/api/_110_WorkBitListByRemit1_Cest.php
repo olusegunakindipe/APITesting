@@ -1,6 +1,6 @@
 <?php 
 
-class _90_WorkBitListByRemit_Cest
+class _110_WorkBitListByRemit1_Cest
 {
     public function _before(ApiTester $I)
     {
@@ -17,8 +17,9 @@ class _90_WorkBitListByRemit_Cest
         $I->wantTo('Check if the some data are present in the API');
         $page = 1;
         $size = 20;
-        $st= 0;
-        $st1 = 1;
+        $st= 2;
+        $st1 = 3;
+        $st2 = 4;
         $fullpath= "";
         $urlParams = [
             $page,
@@ -26,7 +27,7 @@ class _90_WorkBitListByRemit_Cest
         ];
         $api = "/WorkBit/ListByRemitHistory/";
         $fullpath = $api . join("/", $urlParams);
-        $path = sprintf('?state=%d,%d',$st,$st1);
+        $path = sprintf('?state=%d,%d,%d',$st,$st1,$st2);
         $fullpath .=$path;
         $data = $I->sendGET($fullpath);
         $I->wantTo('Get response Time for this Api');
