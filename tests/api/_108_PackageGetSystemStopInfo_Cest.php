@@ -15,7 +15,7 @@ class _108_PackageGetSystemStopInfo_Cest
     {
         $I->AdminLogin();
         $I->wantTo('Check data presence in the API');
-        $id = '202';
+        $id = 202;
         $urlParams = [
             $id
         ];
@@ -30,7 +30,6 @@ class _108_PackageGetSystemStopInfo_Cest
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         $I->seeResponseJsonMatchesJsonPath('$.data.PACKAGE_ID');
-
         // $I->GetCarportListData($data);
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson(); 

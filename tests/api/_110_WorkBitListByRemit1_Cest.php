@@ -18,8 +18,8 @@ class _110_WorkBitListByRemit1_Cest
         $page = 1;
         $size = 20;
         $st= 2;
-        $st1 = 3;
-        $st2 = 4;
+        // $st1 = 3;
+        // $st2 = 4;
         $fullpath= "";
         $urlParams = [
             $page,
@@ -27,7 +27,7 @@ class _110_WorkBitListByRemit1_Cest
         ];
         $api = "/WorkBit/ListByRemitHistory/";
         $fullpath = $api . join("/", $urlParams);
-        $path = sprintf('?state=%d,%d,%d',$st,$st1,$st2);
+        $path = sprintf('?state=%d',$st);
         $fullpath .=$path;
         $data = $I->sendGET($fullpath);
         $I->wantTo('Get response Time for this Api');

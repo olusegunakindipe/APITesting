@@ -11,7 +11,7 @@ class _101_UserListByBankDistrict_Cest
     {
     }
 
-    public function InfoGetUserList(ApiTester $I)
+    public function UserListByBankDistrict(ApiTester $I)
     {
         $I->AdminLogin();
         $I->wantTo('Get the response Time of ToolMenuApi');

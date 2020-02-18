@@ -14,7 +14,7 @@ class _105_CarPortListByPile_Cest
     public function CarportListByPile(ApiTester $I)
     {
         $I->AdminLogin();
-        $I->wantTo('Check data presnec in the API');
+        $I->wantTo('Check data presence in the API');
         $page = 1;
         $size = 20;
         $urlParams = [

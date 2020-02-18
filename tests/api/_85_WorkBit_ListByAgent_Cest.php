@@ -28,7 +28,6 @@ class _85_WorkBit_ListByAgent_Cest
         $I->DisplayResponse($data);
         $I->dontSeeResponseMatchesJsonType([
             'data' => [
-                
                 'SPLIT_TYPE' => 'integer',
                 'NAME' => 'null',
                 'RETAIL_TYPE_NO' => 'null',

@@ -24,11 +24,10 @@ class _109_WorkBit_ListAccount1Cest
             $size
         ];
         $api = "/WorkBit/ListByAccount/";
-        $path = $api . join("/", $urlParams);
-        $fullpath = sprintf('key=&type=%d',$type);
+        $fullpath = $api . join("/", $urlParams);
+        $path = sprintf('?key=&type=%d',$type);
         $fullpath .= $path;
         $data = $I->sendGET($fullpath);
-        $data = $I->sendGET('/WorkBit/ListByAccount/1/20');
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);

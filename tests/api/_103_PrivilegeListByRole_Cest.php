@@ -14,7 +14,7 @@ class _103_PrivilegeListByRole_Cest
     public function PrivilegeListByRole(ApiTester $I)
     {
         $I->AdminLogin();
-        $I->wantTo('Get the get usermenu data');
+        $I->wantTo('Get the data response');
         $page = 1;
         $limit = 20;
         $sort = 'name';
