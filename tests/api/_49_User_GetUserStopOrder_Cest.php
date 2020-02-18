@@ -11,7 +11,7 @@ class _49_User_GetUserStopOrder_Cest
     {
     }
 
-    public function UserGetUserStopPackage(ApiTester $I)
+    public function UserGetUserStopOrder(ApiTester $I)
     {
         $I->AdminLogin();
         $I->wantTo('check possible data in the API record corresponding');

@@ -21,7 +21,8 @@ class _46_Package_UserDurationListBy_Cest
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         // $I->getPackageUserData($data);
         // $I->CheckResponseTimeEquals($data);
-        $I->dontSeeResponseContainsJson(['code' => 401]);
+        $I->seeResponseJsonMatchesJsonPath('$.data...CARPORT_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CARPORT_NAME');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }

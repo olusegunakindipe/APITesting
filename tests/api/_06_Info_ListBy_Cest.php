@@ -19,7 +19,6 @@ class _06_Info_ListBy_Cest
         $page = 1;
         $limit = 20;
         $urlParams = [
-            
             $startDate,
             $endDate,
             $page,

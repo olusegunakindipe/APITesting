@@ -15,10 +15,16 @@ class _67_Agent_GetById_Cest
     {
         $I->AdminLogin();
         $I->wantTo('check possible data in the API record corresponding');
-        $data=$I->sendGET('Agent/GetById/262');
+        $I->wantTo('check if data is accurate');
+        $id=262;
+        $urlParams = [
+            $id
+        ];
+        $api = "/Agent/GetById/";
+        $path = $api . join("/", $urlParams);
+        $data = $I->sendGET($path);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->DisplayResponse($data);
-        $I->dontSeeResponseCodeIs(401);
         $I->wantTo('check if data return json');
         $I->seeResponseIsJson();
         $I->seeResponseJsonMatchesJsonPath('$.data.RELATION_ID');

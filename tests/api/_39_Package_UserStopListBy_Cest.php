@@ -10,7 +10,7 @@ class _39_Package_UserStopListBy_Cest
     public function tryToTest(ApiTester $I)
     {
     }
-    public function CarportChargeHistory(ApiTester $I)
+    public function PackageUserStop(ApiTester $I)
     {
         $I->AdminLogin();
         $I->wantTo('check possible data in the API record corresponding');

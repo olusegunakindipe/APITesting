@@ -17,18 +17,17 @@ class _89_WorkBit_ListAcoount_Cest
         $I->wantTo('Check if the some data are present in the API');
         $page = 1;
         $size = 20;
-        $id =2;
+        $type =2;
         $fullpath = "";
         $urlParams = [
             $page,
             $size
         ];
         $api = "/WorkBit/ListByAccount/";
-        $path = $api . join("/", $urlParams);
-        $fullpath = sprintf('key=&type=%d',$id);
+        $fullpath = $api . join("/", $urlParams);
+        $path = sprintf('?key=&type=%d',$type);
         $fullpath .= $path;
         $data = $I->sendGET($fullpath);
-        $data = $I->sendGET('/WorkBit/ListByAccount/1/20');
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);

@@ -21,7 +21,7 @@ class _60_Carport_ListByDevice_Cest
             $page,
             $size
         ];
-        $api = "/Carport/ListByDevice/1/20/";
+        $api = "/Carport/ListByDevice/";
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);

@@ -30,6 +30,9 @@ class _32_Carport_UserManagerList_Cest
         $I->DisplayResponse($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         // $I->GetUserManagerList($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].USER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CELL_ID');
+        $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseCodeIs(200);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
         $I->seeResponseIsJson();

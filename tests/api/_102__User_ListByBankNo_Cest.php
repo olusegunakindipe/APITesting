@@ -21,7 +21,9 @@ class _102__User_ListByBankNo_Cest
             [
                 "province" => "天津",
                 "city" => "天津市",
-                "bank" => "中国农业银行"       ]);
+                "bank" => "中国农业银行"       
+            ]
+        );
         $data = $I->grabDataFromResponseByJsonPath('debug');
         $I->DisplayResponse($data); //This is response Time
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);

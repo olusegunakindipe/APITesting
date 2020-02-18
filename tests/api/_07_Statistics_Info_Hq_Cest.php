@@ -10,7 +10,7 @@ class _07_Statistics_Info_Hq_Cest
     public function tryToTest(ApiTester $I)
     {
     }
-    public function InfoListBy(ApiTester $I)
+    public function StatisticsInfo(ApiTester $I)
     {
         $I->AdminLogin();
         $I->wantTo('Get the Matching fields in the List');

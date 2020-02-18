@@ -15,9 +15,7 @@ class _91_User_GetBalanceCest
     {
         $I->AdminLogin();
         $I->wantTo('check if data is accurate');
-       
         $api = "/User/GetBalance/";
-      
         $data = $I->sendGET($api);
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);;

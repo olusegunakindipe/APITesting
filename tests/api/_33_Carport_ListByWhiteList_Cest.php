@@ -28,7 +28,9 @@ class _33_Carport_ListByWhiteList_Cest
         // $I->CheckCarportListData($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].model_no');
-        $I->dontSeeResponseCodeIs(401);
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->dontSeeResponseContainsJson(['data' => 401]);
+        $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
 }

@@ -20,7 +20,7 @@ class _34_Carport_ListByAll_Cest
         // $I->CheckValueIsOk($data);
         $I->seeResponseJsonMatchesJsonPath('$.data[0].CARPORT_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data[0].CARPORT_NAME');
-        $I->dontSeeResponseCodeIs(401);
+        $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
 }

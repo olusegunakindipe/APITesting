@@ -37,6 +37,7 @@ class _42_User_GetUserPackageList_Cest
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         // $I->grabResponse();
         // $I->CheckResponseTimeEquals($data);
+        $I->dontSeeResponseContainsJson(['data' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }

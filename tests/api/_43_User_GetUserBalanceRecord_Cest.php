@@ -32,6 +32,7 @@ class _43_User_GetUserBalanceRecord_Cest
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         // $I->getUserBalanceData($data);
         $I->seeResponseIsJson();
+        $I->dontseeResponseCodeIs(401);
         $I->seeResponseCodeIs(200);
     }
 }

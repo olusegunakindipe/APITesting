@@ -30,7 +30,7 @@ class _31_Carport_GetUser_Info_Cest
         $I->DisplayResponse($data);
         // $I->CheckUserInfo($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
-         $I->seeResponseIsJson();
+        $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
 }

@@ -28,7 +28,7 @@ class _48_User_GetUserStopPackage_Cest
         $data = $I->sendGET($path);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->DisplayResponse($data);
-        $I->dontSeeResponseCodeIs(401);
+        $I->dontSeeResponseCodeIs(400);
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         $I->seeResponseIsJson();

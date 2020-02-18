@@ -33,7 +33,7 @@ class _47_Order_GetRefund_Info_Cest
         // $I->getOrder($data);
         $I->seeResponseJsonMatchesJsonPath('$.data.NUM');
         $I->seeResponseJsonMatchesJsonPath('$.data.TOTAL_FEE');
-        $I->dontSeeResponseContainsJson(['code' => 404]);
+        $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseCodeIs(200);
     }
 }

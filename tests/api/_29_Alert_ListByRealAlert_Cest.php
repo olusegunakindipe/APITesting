@@ -27,6 +27,8 @@ class _29_Alert_ListByRealAlert_Cest
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         // $I->checkInfoListData($data);
         // $I->CheckResponseTimeEquals($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data...ALERT_TIME');
+        $I->seeResponseJsonMatchesJsonPath('$.data...DEVICE_SN');
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(200); 
     }
