@@ -31,5 +31,6 @@ class _09_User_UserGetInfo_Cest
         $I->seeResponseIsJson();
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
+        // still check "data" only
     }
 }

@@ -22,5 +22,6 @@ class _07_Statistics_Info_Hq_Cest
         // $I->CheckResponseTimeEquals($data);
         $I->seeResponseJsonMatchesJsonPath('$.data');
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
+        // just test data, no other field
     }
 }

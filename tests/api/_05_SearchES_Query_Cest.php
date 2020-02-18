@@ -15,7 +15,9 @@ class _05_SearchES_Query_Cest
 
         $I->AdminLogin();
         $I->wantTo('Get the Search Query data');
-        $name= "name";
+        //$name= "%E4%B8%AD%E6%B0%B4";
+        $name = "中水";
+        $name = urlencode($name);
         $type = "flatComplex";
         $role = 'hq';
         $path = sprintf('/SearchES/Query?name=%s&type=%s&role=%s&role_id=%d', $name, $type, $role, null);

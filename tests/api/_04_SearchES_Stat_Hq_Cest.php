@@ -28,10 +28,12 @@ class _04_SearchES_Stat_Hq_Cest
         $data = $I->sendGET($path);
         //$I->CheckVariousData($data);
         $I->DisplayResponse($data); //This is response Time
+        // What is this different with response code 200? by ira 
         $I->seeResponseCodeIsSuccessful();
         $I->grabResponse();
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);   
+        // What is this different with response code 200? by ira 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
     }
 }

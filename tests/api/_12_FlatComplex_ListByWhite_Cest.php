@@ -31,6 +31,7 @@ class _12_FlatComplex_ListByWhite_Cest
         $I->dontseeResponseCodeIs(404);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
+        // no any spec check?
     }
     
 }

@@ -36,5 +36,6 @@ class _06_Info_ListBy_Cest
         $I->seeResponseContains('data');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
+        // no any spec test
     }
 }

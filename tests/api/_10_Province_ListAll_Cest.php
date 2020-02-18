@@ -23,5 +23,6 @@ class _10_Province_ListAll_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...DISTRICT_CODE');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
+        // just test DISTRICT_CODE
     }
 }
