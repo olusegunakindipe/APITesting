@@ -6,10 +6,6 @@ class _92_WorkBit_GetWithDrawFee_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function WorkBitGetWithDraw(ApiTester $I)
     {
         $I->AdminLogin();
@@ -24,6 +20,7 @@ class _92_WorkBit_GetWithDrawFee_Cest
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.agingFee');
         $I->seeResponseJsonMatchesJsonPath('$.data.totalFee');
+        $I->seeResponseJsonMatchesJsonPath('$.data.remainFee');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
     }

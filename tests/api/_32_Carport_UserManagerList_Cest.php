@@ -6,10 +6,6 @@ class _32_Carport_UserManagerList_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function UserManagerList(ApiTester $I)
     {
         $I->AdminLogin();
@@ -32,9 +28,10 @@ class _32_Carport_UserManagerList_Cest
         // $I->GetUserManagerList($data);
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].USER_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].MOBILE_PHONE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CREATE_TIME');
         $I->dontSeeResponseContainsJson(['code' => 401]);
-        $I->seeResponseCodeIs(200);
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
         $I->seeResponseIsJson();
+        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
 }

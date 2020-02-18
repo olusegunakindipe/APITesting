@@ -6,10 +6,6 @@ class _104_PrivilegeGetMenu_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function PrivilegeListByRole(ApiTester $I)
     {
         $I->AdminLogin();
@@ -25,6 +21,10 @@ class _104_PrivilegeGetMenu_Cest
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->dontSeeResponseCodeIs(401);
         $I->DisplayResponse($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data...parent_id');
+        $I->seeResponseJsonMatchesJsonPath('$.data...type');
+        $I->seeResponseJsonMatchesJsonPath('$.data...methods');
+        $I->seeResponseJsonMatchesJsonPath('$.data...icon');
         $I->dontSeeResponseContainsJson(['data' => null]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

@@ -6,10 +6,6 @@ class _20_Order_ListBy_Refund_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function OrderListByRefund(ApiTester $I)
     {
         $I->AdminLogin();
@@ -28,14 +24,17 @@ class _20_Order_ListBy_Refund_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->haveHttpHeader('accept', 'application/json');
-        $I->seeHttpHeader('Content-Type','application/json');
-        $I->dontSeeResponseContainsJson(['code' => 401]);
+        $I->seeHttpHeader('Content-Type', 'application/json');
         $I->wantTo('get if data is accurate as specified on the Api');
         // $I->CheckRefundNos($data);
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].ID');
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].TYPE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].REFUND_ORDER_NO');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].USER_ID');
+        $I->dontSeeResponseContainsJson(['code' => 401]);
+        $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
 }

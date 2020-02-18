@@ -6,11 +6,6 @@ class _90_WorkBitListByRemit_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function WorkBitListRemit(ApiTester $I)
     {
         $I->AdminLogin();
@@ -31,10 +26,13 @@ class _90_WorkBitListByRemit_Cest
         $data = $I->sendGET($fullpath);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].USER_ACCOUNT');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CREATE_TIME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].UPDATE_TIME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].WITHDRAW_FEE');
         // $I->CheckWorkBitList($data); 
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
 }

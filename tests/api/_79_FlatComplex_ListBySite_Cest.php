@@ -6,11 +6,6 @@ class _79_FlatComplex_ListBySite_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function FlatComplex_ListBySite(ApiTester $I)
     {
         $I->AdminLogin();
@@ -27,6 +22,8 @@ class _79_FlatComplex_ListBySite_Cest
         // $I->FlatComplexData($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data[0].SITE_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].SITE_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].CELL_ID');
         $I->seeResponseIsJson(); 
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

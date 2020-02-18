@@ -6,10 +6,6 @@ class _15_Order_ListBy_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function Order_List(ApiTester $I)
     {
         $I->AdminLogin();
@@ -28,7 +24,11 @@ class _15_Order_ListBy_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->wantTo('Check response Time for this Api');
-        // $I->checkOrderListData($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].ORDER_TYPE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CHARGE_ORDER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].NICK_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CREATE_TIME');
         $I->DisplayResponse($data);
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();

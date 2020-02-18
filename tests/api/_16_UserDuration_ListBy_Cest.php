@@ -6,11 +6,6 @@ class _16_UserDuration_ListBy_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function InfoListBy(ApiTester $I)
     {
         $I->AdminLogin();
@@ -29,13 +24,16 @@ class _16_UserDuration_ListBy_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->haveHttpHeader('accept', 'application/json');
-        $I->seeHttpHeader('Content-Type','application/json');
+        $I->seeHttpHeader('Content-Type', 'application/json');
         // $I->CheckUserDurationData($data);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        $I->seeResponseJsonMatchesJsonPath('$.data');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].PACKAGE_ORDER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].SITE_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].USER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CELL_ID');
         $I->grabResponse();
-        // $I->CheckResponseTimeEquals($data);
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }

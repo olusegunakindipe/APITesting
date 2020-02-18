@@ -6,10 +6,6 @@ class _88_WorkBit_ListRent_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
 
     public function WorkBitListRent(ApiTester $I)
     {
@@ -30,9 +26,10 @@ class _88_WorkBit_ListRent_Cest
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data...NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data...BIS_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...RENT_NO');
+        $I->seeResponseJsonMatchesJsonPath('$.data...UPDATE_TIME');
         $I->dontSeeResponseCodeIs(401); 
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
 }

@@ -6,11 +6,6 @@ class _86_WorkBit_ListFran_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function WorkBitListFran(ApiTester $I)
     {
         $I->AdminLogin();
@@ -38,6 +33,5 @@ class _86_WorkBit_ListFran_Cest
         ]);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
 }

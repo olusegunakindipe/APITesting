@@ -6,11 +6,6 @@ class _51_Carport_GetwhiteListCest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function CarportGetWhiteList(ApiTester $I)
     {
         $I->AdminLogin();
@@ -35,9 +30,7 @@ class _51_Carport_GetwhiteListCest
         ]);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->DisplayResponse($data);
-        $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
 
 }

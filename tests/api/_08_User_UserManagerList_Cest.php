@@ -6,11 +6,6 @@ class _08_User_UserManagerList_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-    
     public function UserManagerList(ApiTester $I)
     {
         $I->AdminLogin();
@@ -31,10 +26,13 @@ class _08_User_UserManagerList_Cest
         $data = $I->sendGET($path);
         $I->DisplayResponse($data); //This is response Time
         // $I->checkUserManagerData($data);
-        $id = $I->grabDataFromResponseByJsonPath('$.data.data[1].USER_ID');
-        echo 'Check userId: ',print_r($id);
+        $id = $I->grabDataFromResponseByJsonPath('$.data.data[0].USER_ID');
+        $id = $I->grabDataFromResponseByJsonPath('$.data.data[0].MOBILE_PHONE');
+        $id = $I->grabDataFromResponseByJsonPath('$.data.data[0].BALANCE');
+        $id = $I->grabDataFromResponseByJsonPath('$.data.data[0].CELL_ID');
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
+        // still test one year
     }
 }

@@ -6,17 +6,12 @@ class _04_SearchES_Stat_Hq_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function SearchES(ApiTester $I)
     {
         $I->AdminLogin();
         $I->wantTo('Get the ID and Matching fields in SearchES');
         $I->haveHttpHeader('accept', 'application/json');
-        $I->haveHttpHeader('Content-Type','application/json');
+        $I->haveHttpHeader('Content-Type', 'application/json');
         $startDate = '2020-01-07';
         $endDate = '2020-02-05';
         $urlParams = [
@@ -28,12 +23,14 @@ class _04_SearchES_Stat_Hq_Cest
         $data = $I->sendGET($path);
         //$I->CheckVariousData($data);
         $I->DisplayResponse($data); //This is response Time
-        $I->seeResponseCodeIsSuccessful();
+        // What is this different with response code 200? by ira 
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data.log[0].cost_fee');
+        $I->seeResponseJsonMatchesJsonPath('$.data.log[0].degree');
+        $I->seeResponseJsonMatchesJsonPath('$.data.log[0].total_count');
+        $I->dontSeeResponseCodeIs(401);
         $I->grabResponse();
-        // $I->CheckResponseTimeEquals($data);
-        // $I->CheckId();
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);   
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
     }
 }

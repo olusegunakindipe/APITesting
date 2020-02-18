@@ -6,10 +6,6 @@ class _39_Package_UserStopListBy_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function PackageUserStop(ApiTester $I)
     {
         $I->AdminLogin();
@@ -28,12 +24,12 @@ class _39_Package_UserStopListBy_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->DisplayResponse($data);
-        // $I->CheckResponseTimeEquals($data);
-        // $I->CheckCarportChargeData($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].PACKAGE_ORDER_ID');
-        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].USER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CAR_TYPE_NAME');
         $I->dontSeeResponseCodeIs(401);
-         $I->seeResponseIsJson();
+        $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }  
 

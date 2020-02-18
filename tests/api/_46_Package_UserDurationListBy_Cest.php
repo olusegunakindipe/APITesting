@@ -7,10 +7,6 @@ class _46_Package_UserDurationListBy_Cest
     }
 
     // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function PackageUserDuration(ApiTester $I)
     {
         $I->AdminLogin();
@@ -19,11 +15,9 @@ class _46_Package_UserDurationListBy_Cest
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
-        // $I->getPackageUserData($data);
-        // $I->CheckResponseTimeEquals($data);
         $I->seeResponseJsonMatchesJsonPath('$.data...CARPORT_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data...CARPORT_NAME');
         $I->seeResponseIsJson();
-        $I->seeResponseCodeIs(200);
+        $I->dontseeResponseCodeIs(401);
     }
 }

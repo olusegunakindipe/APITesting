@@ -6,10 +6,6 @@ class _33_Carport_ListByWhiteList_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function CarportListByWhite(ApiTester $I)
     {
         $I->AdminLogin();
@@ -28,7 +24,8 @@ class _33_Carport_ListByWhiteList_Cest
         // $I->CheckCarportListData($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].model_no');
-        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].MODEL_TYPE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CREATE_TIME');
         $I->dontSeeResponseContainsJson(['data' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 

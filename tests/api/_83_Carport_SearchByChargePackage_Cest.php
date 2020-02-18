@@ -6,11 +6,6 @@ class _83_Carport_SearchByChargePackage_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function CarportSearchBy(ApiTester $I)
     {
         $I->AdminLogin();

@@ -6,10 +6,6 @@ class _34_Carport_ListByAll_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function CarportListByAll(ApiTester $I)
     {
         $I->AdminLogin();
@@ -20,6 +16,9 @@ class _34_Carport_ListByAll_Cest
         // $I->CheckValueIsOk($data);
         $I->seeResponseJsonMatchesJsonPath('$.data[0].CARPORT_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data[0].CARPORT_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.debug.time');
+        $I->seeResponseJsonMatchesJsonPath('$.debug.peak');
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }

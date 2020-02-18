@@ -6,11 +6,6 @@ class _73_FlatComplex_ListBySite_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function FlatComplexListBySite(ApiTester $I)
     {
         $I->AdminLogin();
@@ -28,6 +23,10 @@ class _73_FlatComplex_ListBySite_Cest
         $I->DisplayResponse($data);
         $I->dontSeeResponseContainsJson(['code' => 401]);
         // $I->GetFlatComplexSiteList($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_CONTACT_PERSON');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].GPS_LNG');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_TELEPHONE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].SITE_NAME');
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         $I->seeResponseIsJson();

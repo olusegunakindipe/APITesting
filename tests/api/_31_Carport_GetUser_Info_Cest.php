@@ -6,10 +6,6 @@ class _31_Carport_GetUser_Info_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function CarPortUser(ApiTester $I)
     {
         $I->AdminLogin();
@@ -30,6 +26,16 @@ class _31_Carport_GetUser_Info_Cest
         $I->DisplayResponse($data);
         // $I->CheckUserInfo($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data...newUser');
+        $I->seeResponseJsonMatchesJsonPath('$.data...buyUser');
+        $I->seeResponseJsonMatchesJsonPath('$.data...arpuIncomeNum');
+        $I->seeResponseMatchesJsonType(['data' =>
+            [
+                'newUser' => 'string',
+                'buyUser' => 'string',
+                'totalUser' => 'string'
+            ]
+        ]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }

@@ -6,11 +6,6 @@ class _97_SystemSystem_ListBySysOperateLog_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function SystemListBySysOperateLog(ApiTester $I)
     {
         $I->AdminLogin();
@@ -29,11 +24,13 @@ class _97_SystemSystem_ListBySysOperateLog_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->haveHttpHeader('accept', 'application/json');
-        $I->seeHttpHeader('Content-Type','application/json');
+        $I->seeHttpHeader('Content-Type', 'application/json');
         // $I->getOrder($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].OPERATION_ACCOUNT');
-        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].DIRECTORY_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ADDRESS');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].IP');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].OPEATION_NAME');
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseCodeIs(200);
     }

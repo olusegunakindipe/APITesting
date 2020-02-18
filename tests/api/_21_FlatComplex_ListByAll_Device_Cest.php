@@ -6,11 +6,6 @@ class _21_FlatComplex_ListByAll_Device_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function FlatComplexList(ApiTester $I)
     {
         $I->AdminLogin();
@@ -29,8 +24,12 @@ class _21_FlatComplex_ListByAll_Device_Cest
         echo "Response Time is:";
         print_r($data[0]['time']);
         $I->wantTo('Check if data is contained in json');
-        // $I->DataInJson($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CELL_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CREATE_TIME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].ALARM_NUM');
         $I->dontSeeResponseCodeIs(404);
+        $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
 }

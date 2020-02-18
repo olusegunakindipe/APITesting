@@ -6,11 +6,6 @@ class _52_Carport_GetOrderInfo_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function CarPortGetOrderInfo(ApiTester $I)
     {
         $I->AdminLogin();

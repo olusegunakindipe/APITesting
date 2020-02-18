@@ -6,10 +6,6 @@ class _35_Carport_Feedback_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function CarPortFeedBack(ApiTester $I) 
     {
         $I->AdminLogin();
@@ -28,15 +24,15 @@ class _35_Carport_Feedback_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->haveHttpHeader('accept', 'application/json');
-        $I->seeHttpHeader('Content-Type','application/json');
+        $I->seeHttpHeader('Content-Type', 'application/json');
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
-        // $I->getCarportFeebackData($data);
         $I->DisplayResponse($data);
         $I->grabResponse();
-        // $I->CheckResponseTimeEquals($data);
-        // $I->CheckId();
-        $I->dontSeeResponseCodeIs(401);
-        $I->seeResponseCodeIs(200); 
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].AREA');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL');
+        $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
     }
 }

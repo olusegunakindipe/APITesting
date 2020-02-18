@@ -6,10 +6,6 @@ class _19_User_GetRechargeInfo_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function UserGetRecharge(ApiTester $I)
     {
         $I->AdminLogin();
@@ -35,6 +31,10 @@ class _19_User_GetRechargeInfo_Cest
             'rechargeMoney' => 'string',
             ]
         ]);
+        $I->seeResponseJsonMatchesJsonPath('$.data.rechargeOrder');
+        $I->seeResponseJsonMatchesJsonPath('$.data.rechargeUser');
+        $I->seeResponseJsonMatchesJsonPath('$.data.rechargeMoney');
+        $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }

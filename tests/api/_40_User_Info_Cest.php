@@ -6,11 +6,6 @@ class _40_User_Info_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function UserInfo(ApiTester $I)
     {
         $I->AdminLogin();
@@ -23,11 +18,12 @@ class _40_User_Info_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->DisplayResponse($data);
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->wantTo('check if the data contains data');
         $I->seeResponseJsonMatchesJsonPath('$.data...USER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...USER_WHITE_TYPE');
+        $I->seeResponseJsonMatchesJsonPath('$.data...MOBILE_PHONE');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CARD_NO');
         $I->seeResponseJsonMatchesJsonPath('$.data...CREATE_TIME');
-        // $I->CheckUserData($data);
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);

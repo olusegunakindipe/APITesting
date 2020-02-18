@@ -6,11 +6,6 @@ class _66_FlatComplex_ListBy_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function FlatComplexListBy(ApiTester $I)
     {
         $I->AdminLogin();
@@ -27,6 +22,10 @@ class _66_FlatComplex_ListBy_Cest
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);
         // $I->checkFlatComplexList($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data...CELL_TYPE');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CELL_DISTRICT_CODE');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CELL_NAME_ABBREVIATION');
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->seeResponseIsJson();

@@ -6,11 +6,6 @@ class _70_Contract_ListBy_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function ContractList(ApiTester $I)
     {
         $I->AdminLogin();
@@ -24,8 +19,11 @@ class _70_Contract_ListBy_Cest
         $api = "/Contract/ListBy/";
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->DisplayResponse($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].id');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CONTRACT_CODE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].AGENT_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].AGENT_NAME');
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);

@@ -6,11 +6,6 @@ class _107_Package_SystemDurationGet_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function PackageSystemDuration(ApiTester $I)
     {
         $I->AdminLogin();
@@ -33,6 +28,5 @@ class _107_Package_SystemDurationGet_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.DURATION');
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
 }

@@ -5,11 +5,6 @@ class _09_User_UserGetInfo_Cest
     public function _before(ApiTester $I)
     {
     }
-
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     
     public function UserGetInfo(ApiTester $I)
     {
@@ -27,9 +22,21 @@ class _09_User_UserGetInfo_Cest
         $I->grabResponse();
         // $I->CheckDetail($data);
         $I->DisplayResponse($data);
-        $I->seeResponseJsonMatchesJsonPath('$..data');
+        $I->seeResponseJsonMatchesJsonPath('$..data.newUser');
+        $I->seeResponseJsonMatchesJsonPath('$..data.totalUser');
+        $I->seeResponseJsonMatchesJsonPath('$..data.buyUser');
+        $I->seeResponseJsonMatchesJsonPath('$..data.arpuIncome');
+        $I-> seeResponseMatchesJsonType(['data' =>
+            [
+                'newUser' => 'string',
+                'totalUser' => 'string',
+                'buyUser' => 'string',
+                'arpuIncome' => 'string'
+            ]
+        ]);
         $I->seeResponseIsJson();
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
+        // still check "data" only
     }
 }

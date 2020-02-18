@@ -6,11 +6,6 @@ class _99_SystemListByUploadHistory_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function SystemListByUploadHistory(ApiTester $I)
     {
         $I->AdminLogin();
@@ -30,9 +25,9 @@ class _99_SystemListByUploadHistory_Cest
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data...CREATE_ACCOUNT');
         $I->seeResponseJsonMatchesJsonPath('$.data...UPLOAD_TIME');
+        $I->seeResponseJsonMatchesJsonPath('$.data...UPLOAD_STATE');
         $I->dontSeeResponseCodeIs(401); 
         $I->seeResponseIsJson(); 
-        $I->seeResponseCodeIs(200); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
 }

@@ -6,10 +6,6 @@ class _38_Carport_ListByPaymentInfo_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function ListPaymentInfo(ApiTester $I)
     {
         $I->AdminLogin();
@@ -32,6 +28,10 @@ class _38_Carport_ListByPaymentInfo_Cest
         $I->wantTo('check the data response');
         // $I->CheckContent($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].STOP_ORDER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CARPORT_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CAR_TYPE_NAME');
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->seeResponseIsJson();
         $I->dontSeeResponseCodeIs(401);

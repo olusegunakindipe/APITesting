@@ -6,11 +6,6 @@ class _78_Billing_GetRate_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function BillingGet(ApiTester $I)
     {
         $I->AdminLogin();
@@ -27,7 +22,10 @@ class _78_Billing_GetRate_Cest
         $I->wantTo('Get the data');
         // $I->GetBillingDataRate($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data.rate[0].SITE_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.rate[0].CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.rate[0].CELL_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.rate[0].SITE_NAME');
         $I->seeResponseIsJson(); 
         $I->dontseeResponseCodeIs(401);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

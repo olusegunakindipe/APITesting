@@ -6,11 +6,6 @@ class _87_WorkBit_ListSell_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function WorkBitListSell(ApiTester $I)
     {
         $I->AdminLogin();
@@ -26,17 +21,12 @@ class _87_WorkBit_ListSell_Cest
         $data = $I->sendGET($path);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
-        $I->SeeResponseMatchesJsonType([
-            'debug' => [
-                'time' => 'float',
-                'peak' => 'float',
-                'query' => 'integer',
-                'cache'=> 'integer',
-            ]
-        ]);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].BI_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].SELL_NO');
         $I->dontSeeResponseCodeIs(401); 
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
 }

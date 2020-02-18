@@ -2,12 +2,8 @@
 
 class _42_User_GetUserPackageList_Cest
 {
-    public function _before(ApiTester $I)
-    {
-    }
 
-    // tests
-    public function tryToTest(ApiTester $I)
+    public function _before(ApiTester $I)
     {
     }
 
@@ -17,22 +13,23 @@ class _42_User_GetUserPackageList_Cest
         $I->wantTo('check possible data in the API record corresponding');
         $page = 1;
         $size = 20;
-        $id = '100000227661';
+        $id = '100000194423';
         $urlParams = [
+            $id,
             $page,
-            $size,
-            $id
+            $size            
         ];
         $api = "/User/GetUserPackageList/";
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->wantTo('check json data');
-        // $I->CheckDataFlatComplex($data);
-        // $I->wantTo('Get response is empty');
-        // $I->CheckForEmptiness($data);
+       
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data...ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...PACKAGE_TYPE');
+        $I->seeResponseJsonMatchesJsonPath('$.data...DURATION');
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         // $I->grabResponse();

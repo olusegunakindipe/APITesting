@@ -6,11 +6,6 @@ class _68_Property_GetById_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function PropertyGetById(ApiTester $I)
     {
         $I->AdminLogin();
@@ -22,7 +17,6 @@ class _68_Property_GetById_Cest
         $api = "/Property/GetById/";
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->DisplayResponse($data);
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();

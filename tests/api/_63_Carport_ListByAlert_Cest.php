@@ -6,10 +6,6 @@ class _63_Carport_ListByAlert_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function CarportListByAlert(ApiTester $I)
     {
         $I->AdminLogin();
@@ -32,7 +28,8 @@ class _63_Carport_ListByAlert_Cest
         $I->wantTo('check Carport alert data');
         $I->seeResponseJsonMatchesJsonPath('$.data...ALERT_TIME');
         $I->seeResponseJsonMatchesJsonPath('$.data...CARPORT_ID');
-        // $I->CheckCarportAlertData($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data...CARPORT_ID');
+        $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }

@@ -7,9 +7,6 @@ class _58_Province_ListCarportAll_Cest
     }
 
     // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
 
     public function ProvinceListCarport(ApiTester $I) 
     {
@@ -25,6 +22,8 @@ class _58_Province_ListCarportAll_Cest
         $I->dontSeeResponseContainsJson(['data' => null]);
         $I->seeResponseJsonMatchesJsonPath('$.data[0].DISTRICT_CODE');
         $I->seeResponseJsonMatchesJsonPath('$.data[0].DISTRICT_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].GPS_LAT');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].GPS_LNG');
         $I->seeResponseIsJson();
         $I->DontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);

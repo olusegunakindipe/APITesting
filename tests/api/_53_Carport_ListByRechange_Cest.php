@@ -5,10 +5,6 @@ class _53_Carport_ListByRechange_Cest
     public function _before(ApiTester $I)
     {
     }
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
 
     public function CarportListByRechange(ApiTester $I)
     {
@@ -34,6 +30,8 @@ class _53_Carport_ListByRechange_Cest
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].RECHARGE_ORDER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].TRANSACTION_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].MOBILE_PHONE');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }

@@ -6,11 +6,6 @@ class _74_FlatComplex_GetSite_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function PropertyListBy(ApiTester $I)
     {
         $I->AdminLogin();

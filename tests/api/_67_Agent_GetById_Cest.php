@@ -6,11 +6,6 @@ class _67_Agent_GetById_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function AgentGetById(ApiTester $I)
     {
         $I->AdminLogin();
@@ -23,7 +18,6 @@ class _67_Agent_GetById_Cest
         $api = "/Agent/GetById/";
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->DisplayResponse($data);
         $I->wantTo('check if data return json');
         $I->seeResponseIsJson();

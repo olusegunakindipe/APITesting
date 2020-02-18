@@ -6,11 +6,6 @@ class _25_Pile_Serach_By_Useless__Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function PileSearchByUseless(ApiTester $I) 
     {
         $I->AdminLogin();
@@ -28,11 +23,12 @@ class _25_Pile_Serach_By_Useless__Cest
         $datas = $I->grabDataFromResponseByJsonPath('data');
         echo "Total number:";
         print_r($datas[0]['pageInfo']['total']);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CHARGING_PILE_SN');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CHARGING_PILE_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.debug.time');
         $I->seeResponseIsJson();
-        // $I->CheckResponseTimeEquals($data);
         $I->dontSeeResponseCodeIs(401);
-        $I->seeResponseCodeIs(200);
-        
+        $I->seeResponseCodeIs(200);  
     }
 
 }

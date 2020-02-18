@@ -6,10 +6,6 @@ class _29_Alert_ListByRealAlert_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function InfoListBy(ApiTester $I) 
     {
         $I->AdminLogin();
@@ -26,9 +22,11 @@ class _29_Alert_ListByRealAlert_Cest
         $I->DisplayResponse($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         // $I->checkInfoListData($data);
-        // $I->CheckResponseTimeEquals($data);
         $I->seeResponseJsonMatchesJsonPath('$.data...ALERT_TIME');
         $I->seeResponseJsonMatchesJsonPath('$.data...DEVICE_SN');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...SITE_ID');
+        $I->seeResponseIsJson();
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(200); 
     }

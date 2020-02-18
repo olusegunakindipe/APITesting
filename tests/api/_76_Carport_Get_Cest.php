@@ -6,11 +6,6 @@ class _76_Carport_Get_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function CarportGet(ApiTester $I)
     {
         $I->AdminLogin();
@@ -28,6 +23,8 @@ class _76_Carport_Get_Cest
         $I->dontSeeResponseContainsJson(['data' => 'invalid argument']);
         $I->seeResponseJsonMatchesJsonPath('$.data.CARPORT_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.CARPORT_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.CARPORT_LOCATION');
+        $I->seeResponseJsonMatchesJsonPath('$.data.GPS_LAT');
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }

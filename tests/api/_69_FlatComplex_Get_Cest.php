@@ -6,11 +6,6 @@ class _69_FlatComplex_Get_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function FlatComplexGet(ApiTester $I)
     {
         $I->AdminLogin();
@@ -22,7 +17,6 @@ class _69_FlatComplex_Get_Cest
         $api = "/FlatComplex/Get/";
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->DisplayResponse($data);
         $I->dontSeeResponseCodeIs(401);
         // $I->GetFlatComplexData($data);
@@ -33,8 +27,7 @@ class _69_FlatComplex_Get_Cest
                 'LOCATION'=> 'string',
                 'NATURE'=> 'string',
                 'GPS_LNG' => 'string'
-
-             ]
+            ]
         ]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);

@@ -6,11 +6,6 @@ class _65_Property_ListBy_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function PropertyListBy(ApiTester $I)
     {
         $I->AdminLogin();
@@ -29,6 +24,8 @@ class _65_Property_ListBy_Cest
         $I->wantTo('check if the data is present');
         // $I->checkPropertyData($data);
         $I->seeResponseJsonMatchesJsonPath('$.data...PROPERTY_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...PROPERTY_ACCOUNT');
+        $I->seeResponseJsonMatchesJsonPath('$.data...PROPERTY_TYPE');
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);

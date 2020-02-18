@@ -6,11 +6,6 @@ class _108_PackageGetSystemStopInfo_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function GetSystemStopInfo(ApiTester $I)
     {
         $I->AdminLogin();
@@ -30,7 +25,8 @@ class _108_PackageGetSystemStopInfo_Cest
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         $I->seeResponseJsonMatchesJsonPath('$.data.PACKAGE_ID');
-        // $I->GetCarportListData($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.PAY_MONEY');
+        $I->seeResponseJsonMatchesJsonPath('$.data.CAR_TYPE_NAME');
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

@@ -6,10 +6,6 @@ class _06_Info_ListBy_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function InfoListBy(ApiTester $I)
     {
         $I->AdminLogin();
@@ -31,12 +27,14 @@ class _06_Info_ListBy_Cest
         $I->DisplayResponse($data); //This is response Time
         $I->wantTo('see if response contains json');
         $I->seeResponseIsJson();
-        $I->grabResponse();
-        // $I->CheckNumber($data);
-        $I->dontSeeResponseCodeIs(401);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].TOPIC_CONTENT');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].TOPIC_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CREATE_USER_ACCOUNT');
+        $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseContains('data');
-        // $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
+        // no any spec test
     }
 }

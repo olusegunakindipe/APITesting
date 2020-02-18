@@ -6,11 +6,6 @@ class _71_Project_ListBy_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function ProjectListBy(ApiTester $I)
     {
         $I->AdminLogin();
@@ -31,6 +26,8 @@ class _71_Project_ListBy_Cest
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CONTRACT_CODE');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CIID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ACTUAL_PORT_COUNT');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ELECTRICITY_NUMBER');
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }

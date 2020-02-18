@@ -6,17 +6,12 @@ class _102__User_ListByBankNo_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function UserListByBankNo(ApiTester $I)
     {
         $I->AdminLogin();
         $I->wantTo('Get the response Time of UserListByBankNo');
         $I->haveHttpHeader('accept', 'application/json');
-        $I->haveHttpHeader('Content-Type','application/json');
+        $I->haveHttpHeader('Content-Type', 'application/json');
         $I->sendPOST('/User/ListByBankNo/?key=',
             [
                 "province" => "天津",

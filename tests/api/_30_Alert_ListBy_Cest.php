@@ -5,11 +5,6 @@ class _30_Alert_ListBy_Cest
     public function _before(ApiTester $I)
     {
     }
-
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     
     public function AlertListBy(ApiTester $I) 
     {
@@ -34,7 +29,10 @@ class _30_Alert_ListBy_Cest
         $I->wantTo('check if response contains data');
         $I->seeResponseJsonMatchesJsonPath('$.data...ALERT_TIME');
         $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...SITE_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data...DEVICE_TYPE');
         $I->dontSeeResponseCodeIs(401);
+        $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
 }

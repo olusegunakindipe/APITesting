@@ -6,11 +6,6 @@ class _80_Carport_ListByStopRate_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function CarportList(ApiTester $I)
     {
         $I->AdminLogin();
@@ -29,9 +24,9 @@ class _80_Carport_ListByStopRate_Cest
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].RATE_NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].BILLING_TYPE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CREATE_TIME');
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
-        // $I->GetCarportListData($data);
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

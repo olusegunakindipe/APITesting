@@ -6,22 +6,17 @@ class _44_User_GetUserOrder_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function UserGetUserOrder(ApiTester $I)
     {
         $I->AdminLogin();
         $I->wantTo('check possible data in the API record corresponding');
+        $id = '100000228124';
         $page = 1;
         $size = 20;
-        $id = '100000056848';
         $urlParams = [
+            $id,
             $page,
             $size,
-            $id
         ];
         $api = "/User/GetUserOrder/";
         $path = $api . join("/", $urlParams);
@@ -31,10 +26,13 @@ class _44_User_GetUserOrder_Cest
         $I->wantTo('check if the data returned json');
         // $I->GetUserData($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data...CHARGE_ORDER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...LOCATION');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CELL_NAME');
         $I->dontSeeResponseContainsJson(['data' => 'Invalid currenpage']);
         $I->dontSeeResponseContainsJson(['data' => 'Invalid pageSize']);
         $I->seeResponseIsJson();
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->seeResponseCodeIs(200); 
     }
 }

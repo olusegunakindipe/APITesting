@@ -6,12 +6,7 @@ class _14_PileOrder_ListCurrerntBy_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
-    Public function ListCurrentBy(ApiTester $I)
+    public function ListCurrentBy(ApiTester $I)
     {
         $I->AdminLogin();
         $I->wantTo('Check if the some data are present in the API');
@@ -28,6 +23,11 @@ class _14_PileOrder_ListCurrerntBy_Cest
         // $I->CheckPresence($data);
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data...USER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CHARGE_ORDER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...MOBILE_PHONE');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CARD_NO');
         $I->dontSeeResponseCodeIs(404);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 

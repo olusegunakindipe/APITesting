@@ -6,11 +6,6 @@ class _37_Carport_ListByChargeHistory_Top_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function CarportChargeHistory(ApiTester $I)
     {
         $I->AdminLogin();
@@ -32,12 +27,12 @@ class _37_Carport_ListByChargeHistory_Top_Cest
         $I->dontSeeResponseCodeIs(401);
         $I->wantTo('Check for Carport Charge History');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CHARGE_ORDER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].USER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_ID');
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
-
-        // $I->CheckCarportChargeHistory($data);
         $I->seeResponseIsJson();
-        $I->seeResponseCodeIs(200);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
 
     }

@@ -6,11 +6,6 @@ class _57_Carport_ListByAllDevice_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function CarportListByAllDevice(ApiTester $I)
     {
         $I->AdminLogin();
@@ -24,7 +19,6 @@ class _57_Carport_ListByAllDevice_Cest
         $api = "/Carport/ListByAllDevice/";
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('See if the data are correct');

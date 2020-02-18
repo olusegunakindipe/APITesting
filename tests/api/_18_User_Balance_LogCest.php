@@ -6,8 +6,6 @@ class _18_User_Balance_LogCest
     {
     }
 
-    // tests
-  
     public function UserBalanceLog(ApiTester $I)
     {
         $I->AdminLogin();
@@ -31,9 +29,10 @@ class _18_User_Balance_LogCest
         print_r($data[0]['time']);
         echo "Peak Time:"; 
         print_r($data[0]['peak']); //This is the peak time
-        // // $I->CheckResponseTimeEquals($data);
-        // // $I->CheckUsereBalanceData($data);
-        // $I->CheckResponseTimeEquals($data);
+        $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].USER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].NICK_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].RECHARGE_ORDER_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data...USER_ID');
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();

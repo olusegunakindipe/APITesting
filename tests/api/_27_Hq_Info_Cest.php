@@ -6,11 +6,6 @@ class _27_Hq_Info_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function HQInfo(ApiTester $I) 
     {
         $I->AdminLogin();
@@ -24,7 +19,10 @@ class _27_Hq_Info_Cest
             'province' => 'array',
             'num_site' => 'string']
         ]);
-        // $I->CheckResponseTimeEquals($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.type');
+        $I->seeResponseJsonMatchesJsonPath('$.data.province');
+        $I->seeResponseJsonMatchesJsonPath('$.data.num_flat_complex');
+        $I->seeResponseJsonMatchesJsonPath('$.data.num_site');
         $I->seeResponseIsJson();
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(200);

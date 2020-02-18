@@ -6,11 +6,6 @@ class _85_WorkBit_ListByAgent_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function WorkBitAgent(ApiTester $I)
     {
         $I->AdminLogin();
@@ -36,6 +31,5 @@ class _85_WorkBit_ListByAgent_Cest
          ]);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
 }

@@ -6,10 +6,6 @@ class _95_CardListByAll_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function CardListByAll(ApiTester $I)
     {
         $I->AdminLogin();
@@ -28,6 +24,8 @@ class _95_CardListByAll_Cest
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data...CARD_NO');
         $I->seeResponseJsonMatchesJsonPath('$.data...USER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...RELATION_TYPE');
+        $I->seeResponseJsonMatchesJsonPath('$.data...STATE');
         $I->dontSeeResponseContainsJson(['data' => 'invalid currentPage']);
         // $I->TestPackageSystemStop($data);
         $I->seeResponseIsJson(); 

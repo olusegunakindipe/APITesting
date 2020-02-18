@@ -6,12 +6,6 @@ class _26_FlatComplex_ListAllPort_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-
-    }
-
     public function FlatComplexListAllPort(ApiTester $I)
     {
         $I->AdminLogin();
@@ -28,9 +22,12 @@ class _26_FlatComplex_ListAllPort_Cest
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('check if the data are of specfic value');
-        // $I->checkFlatComplexListData($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].ELECTRICITY_METER_SN');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CELL_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CHARGING_PILE_SN');
+        $I->seeResponseIsJson();
         $I->dontSeeResponseCodeIs(401);
-        $I->seeResponseCodeIs(200);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
 }

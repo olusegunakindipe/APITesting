@@ -6,11 +6,6 @@ class _61_Carport_Info_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function CarPortInfo(ApiTester $I)
     {
         $I->AdminLogin();

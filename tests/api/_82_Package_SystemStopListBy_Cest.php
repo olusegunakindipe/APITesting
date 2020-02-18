@@ -6,11 +6,6 @@ class _82_Package_SystemStopListBy_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function PackageSystemStop(ApiTester $I)
     {
         $I->AdminLogin();
@@ -28,7 +23,9 @@ class _82_Package_SystemStopListBy_Cest
         $I->DisplayResponse($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data...PACKAGE_ID');
-        // $I->TestPackageSystemStop($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data...SYS_DURATION_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...DESCRIPTION');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CELL_NAME');
         $I->seeResponseIsJson(); 
         $I->dontSeeResponseCodeIs(401); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

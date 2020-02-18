@@ -6,11 +6,6 @@ class _105_CarPortListByPile_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function CarportListByPile(ApiTester $I)
     {
         $I->AdminLogin();
@@ -30,6 +25,8 @@ class _105_CarPortListByPile_Cest
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data...CHARGING_PILE_SN');
         $I->seeResponseJsonMatchesJsonPath('$.data...CHARGING_PILE_STATE');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CARPORT_NAME');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }

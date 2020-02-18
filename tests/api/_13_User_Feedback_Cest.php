@@ -6,11 +6,6 @@ class _13_User_Feedback_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     Public function UserFeedBack(ApiTester $I)
     {
         $I->AdminLogin();
@@ -29,13 +24,16 @@ class _13_User_Feedback_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->haveHttpHeader('accept', 'application/json');
-        $I->seeHttpHeader('Content-Type','application/json');        
+        $I->seeHttpHeader('Content-Type', 'application/json');        
         // $I->TestForUserFeedbackData($data);
         $I->dontSeeResponseCodeIs(401);
         $I->DisplayResponse($data);
         $I->grabResponse();
         $I->dontSeeResponseMatchesJsonType(['id' => 'integer'], '$.data.data[0]');
-        // $I->CheckResponseTimeEquals($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data...ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...AREA');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CELL_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CELL');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }

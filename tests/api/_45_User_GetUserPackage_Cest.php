@@ -6,22 +6,17 @@ class _45_User_GetUserPackage_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function UserGetUserPackage(ApiTester $I)
     {
         $I->AdminLogin();
         $I->wantTo('check possible data in the API record corresponding');
+        $id = '100000157254';
         $page = 1;
         $size = 20;
-        $id = '100000056848';
         $urlParams = [
+            $id,
             $page,
             $size,
-            $id
         ];
         $api = "/User/GetUserPackage/";
         $path = $api . join("/", $urlParams);
@@ -30,9 +25,11 @@ class _45_User_GetUserPackage_Cest
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->grabResponse();
-        // $I->CheckResponseTimeEquals($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->dontSeeResponseContainsJson(['data' => 'Invalid pageSize']);
+        $I->seeResponseJsonMatchesJsonPath('$.data...PACKAGE_ORDER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...STATE');
+        $I->seeResponseJsonMatchesJsonPath('$.data...PAY_TYPE');
         $I->wantTo('check if data returned json');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);

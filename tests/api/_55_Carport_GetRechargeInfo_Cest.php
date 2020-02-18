@@ -5,11 +5,6 @@ class _55_Carport_GetRechargeInfo_Cest
     public function _before(ApiTester $I)
     {
     }
-
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     
     public function CarportGetRechargeInfo(ApiTester $I)
     {
@@ -28,7 +23,6 @@ class _55_Carport_GetRechargeInfo_Cest
         $api = "/Carport/GetRechargeInfo/";
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);
         // $I->CheckForData($data);

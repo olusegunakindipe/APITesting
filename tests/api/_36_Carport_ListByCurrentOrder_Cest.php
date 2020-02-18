@@ -6,10 +6,6 @@ class _36_Carport_ListByCurrentOrder_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function CarportListByCurrentOrder(ApiTester $I)
     {
         $I->AdminLogin();
@@ -23,13 +19,15 @@ class _36_Carport_ListByCurrentOrder_Cest
         $api = "/Carport/ListByCurrentOrder/";
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);
-        // $I->CheckUserAndCharge($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].USER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CHARGE_ORDER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].MOBILE_PHONE');
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();
-        $I->seeResponseCodeIs(200);
+        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
     }
 
 }

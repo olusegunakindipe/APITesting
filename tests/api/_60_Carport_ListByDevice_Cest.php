@@ -6,11 +6,6 @@ class _60_Carport_ListByDevice_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function CarportListByAllDevice(ApiTester $I)
     {
         $I->AdminLogin();
@@ -24,16 +19,16 @@ class _60_Carport_ListByDevice_Cest
         $api = "/Carport/ListByDevice/";
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('See if the data are correct');
         // $I->CheckCarportDeviceData($data);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ENTRANCE_GUARD_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CARPORT_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].DEVICE_SN');
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         $I->grabResponse();
-        // $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }

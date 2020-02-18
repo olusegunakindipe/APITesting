@@ -6,10 +6,6 @@ class _64_Agent_ListBy_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function AgentListBy(ApiTester $I)
     {
         $I->AdminLogin();
@@ -30,7 +26,6 @@ class _64_Agent_ListBy_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].AGENT_TYPE');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].AGENT_ACCOUNT');
         // $I->checkAgentData($data);
-        $I->dontSeeResponseCodeIs(401);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

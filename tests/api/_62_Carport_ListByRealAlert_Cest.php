@@ -6,11 +6,6 @@ class _62_Carport_ListByRealAlert_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function CarportListByRealAlert(ApiTester $I)
     {
         $I->AdminLogin();
@@ -30,7 +25,7 @@ class _62_Carport_ListByRealAlert_Cest
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ALERT_TIME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].DEVICE_SN');
-        // $I->checkCarportList($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CARPORT_NAME');
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 

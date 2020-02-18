@@ -6,11 +6,6 @@ class _75_Carport_ListByFlatComplex_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function CarportListByFlat(ApiTester $I)
     {
         $I->AdminLogin();
@@ -28,6 +23,8 @@ class _75_Carport_ListByFlatComplex_Cest
         $I->DisplayResponse($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].MAX_CHARGE_MINUTE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_TYPE');
         // $I->CheckTestData($data);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

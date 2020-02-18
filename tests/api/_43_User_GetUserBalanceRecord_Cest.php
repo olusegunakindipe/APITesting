@@ -6,22 +6,17 @@ class _43_User_GetUserBalanceRecord_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function UserGetUserBalance(ApiTester $I)
     {
         $I->AdminLogin();
         $I->wantTo('check possible data in the API record corresponding');
+        $id = '100000194423';
         $page = 1;
         $size = 20;
-        $id = '100000227661';
         $urlParams = [
+            $id,
             $page,
             $size,
-            $id
         ];
         $api = "/User/GetUserBalanceRecord/";
         $path = $api . join("/", $urlParams);
@@ -30,6 +25,10 @@ class _43_User_GetUserBalanceRecord_Cest
         $I->DisplayResponse($data);
         $I->wantTo('check if response is in Json');
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data...ORDER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...AFTER_BALANCE');
+        $I->seeResponseJsonMatchesJsonPath('$.data...createTime');
+        $I->seeResponseJsonMatchesJsonPath('$.data...moneyType');
         // $I->getUserBalanceData($data);
         $I->seeResponseIsJson();
         $I->dontseeResponseCodeIs(401);

@@ -5,12 +5,7 @@ class _84_WorkBit_ListByRetail_Cest
     public function _before(ApiTester $I)
     {
     }
-
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
+    
     public function WorkBitListRetail(ApiTester $I)
     {
         $I->AdminLogin();
@@ -35,6 +30,5 @@ class _84_WorkBit_ListByRetail_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].SPLIT_TYPE');
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
 }

@@ -6,10 +6,6 @@ class _22_Meter_ListBy_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function MeterList(ApiTester $I)
     {
         $I->AdminLogin();
@@ -27,7 +23,12 @@ class _22_Meter_ListBy_Cest
         $I->DisplayResponse($data);
         $I->wantTo('Check for response data');
         // $I->CheckDataPageNumbers($data);
-        $I->dontSeeResponseCodeIs(401);      
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CELL_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].ELECTRICITY_METER_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].ELECTRICITY_METER_SN');
+        $I->seeResponseIsJson();
+        $I->dontSeeResponseCodeIs(401);    
         $I->seeResponseCodeIs(200);
     }
 }

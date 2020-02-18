@@ -6,10 +6,6 @@ class _24_Pile_List_ByAll_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function PileListByAll(ApiTester $I) 
     {
         $I->AdminLogin();
@@ -26,7 +22,11 @@ class _24_Pile_List_ByAll_Cest
         $I->DisplayResponse($data);
         // $I->CheckResponseTimeEquals($data);
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CHARGING_PILE_SN');
-        $I->dontSeeResponseCodeIs(404);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CHARGING_PILE_SN');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CHARGING_PILE_SN');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CHARGING_PILE_SN');
+        $I->dontSeeResponseCodeIs(401);
+        $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
 

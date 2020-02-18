@@ -6,11 +6,6 @@ class _103_PrivilegeListByRole_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function PrivilegeListByRole(ApiTester $I)
     {
         $I->AdminLogin();
@@ -31,6 +26,9 @@ class _103_PrivilegeListByRole_Cest
         $data = $I->sendGET($fullpath);
         $I->DisplayResponse($data); //This is response Time
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data...account');
+        $I->seeResponseJsonMatchesJsonPath('$.data...status');
+        $I->seeResponseJsonMatchesJsonPath('$.data...is_reset');
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);

@@ -6,11 +6,6 @@ class _81_Package_SystemDuration_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function PackageSystem(ApiTester $I)
     {
         $I->AdminLogin();
@@ -27,8 +22,9 @@ class _81_Package_SystemDuration_Cest
         $I->wantTo('Get response Time for this Api');
         $I->DisplayResponse($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
-        // $I->TestPackageData($data);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].PACKAGE_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].POWER_TYPE_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].STATE');
         $I->seeResponseIsJson(); 
         $I->dontSeeResponseCodeIs(401); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

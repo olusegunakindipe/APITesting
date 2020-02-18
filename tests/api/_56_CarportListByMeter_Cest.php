@@ -6,11 +6,6 @@ class _56_CarportListByMeter_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function CarportListByMeter(ApiTester $I)
     {
         $I->AdminLogin();
@@ -24,13 +19,14 @@ class _56_CarportListByMeter_Cest
         $api = "/Carport/ListByMeter/";
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         $I->wantTo('Check response Time for this Api');
         $I->DisplayResponse($data);
         $I->wantTo('See if the data are correct');
         // $I->CheckForValue($data);
         $I->seeResponseJsonMatchesJsonPath('$.data...ELECTRICITY_METER_SN');
         $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CELL_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data...ELECTRICITY_METER_NAME');
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->grabResponse();

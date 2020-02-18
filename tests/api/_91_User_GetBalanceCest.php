@@ -6,11 +6,6 @@ class _91_User_GetBalanceCest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function UsergetBalance(ApiTester $I)
     {
         $I->AdminLogin();

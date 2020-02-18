@@ -52,7 +52,9 @@ class ApiTester extends \Codeception\Actor
     {
         $I = $this;
         if (!file_exists(getcwd() . $I->tempPath)) {
-            $I->Login('admindev', '123456');
+            $pass = "password.txt";
+            $password = file_get_contents($pass);
+            $I->Login('admindev', $password);
         } else {
             usleep(500);
             $token = trim(file_get_contents(getcwd() . $I->tempPath));

@@ -6,11 +6,6 @@ class _72_Contract_Get_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function PropertyListBy(ApiTester $I)
     {
         $I->AdminLogin();

@@ -24,10 +24,14 @@ class _12_FlatComplex_ListByWhite_Cest
         $I->DisplayResponse($data);
         $I->grabResponse();
         $I->seeResponseContains('data');
-        // $I->CheckFlatCoplexListBy($data);
+        $I->seeResponseJsonMatchesJsonPath('$.data...USER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data...STATE');
+        $I->seeResponseJsonMatchesJsonPath('$.data...MOBILE_PHONE');
+        $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
         $I->dontseeResponseCodeIs(404);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
+        // no any spec check?
     }
     
 }

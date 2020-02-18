@@ -6,11 +6,6 @@ class _77_Billing_ListRateBy_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function CarportGet(ApiTester $I)
     {
         $I->AdminLogin();
@@ -28,9 +23,11 @@ class _77_Billing_ListRateBy_Cest
         $I->DisplayResponse($data);
         // $I->TestBillingData($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].STRATEGY_RATE_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].SITE_ID');
         $I->seeResponseIsJson(); 
         $I->dontseeResponseCodeIs(401);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
-        $I->seeResponseContainsJson(['code' => 200]);
     }
 }

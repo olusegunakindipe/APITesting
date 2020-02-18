@@ -6,11 +6,6 @@ class _109_WorkBit_ListAccount1Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function WorkBitListAccount1(ApiTester $I)
     {
         $I->AdminLogin();
@@ -33,11 +28,13 @@ class _109_WorkBit_ListAccount1Cest
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ACCOUNT_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].WITHDRAWALS');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ACCOUNT_TYPE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].BALANCE');
         // $I->TestAccountList($data);
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->dontSeeResponseContainsJson(['data' => null]);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 
-        $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }
 }

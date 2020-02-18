@@ -6,11 +6,6 @@ class _47_Order_GetRefund_Info_Cest
     {
     }
 
-    // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
     public function GetRefundInfo(ApiTester $I)
     {
         $I->AdminLogin();
@@ -29,11 +24,13 @@ class _47_Order_GetRefund_Info_Cest
         $path = $api . join("/", $urlParams);
         $data = $I->sendGET($path);
         $I->haveHttpHeader('accept', 'application/json');
-        $I->seeHttpHeader('Content-Type','application/json');
+        $I->seeHttpHeader('Content-Type', 'application/json');
         // $I->getOrder($data);
         $I->seeResponseJsonMatchesJsonPath('$.data.NUM');
         $I->seeResponseJsonMatchesJsonPath('$.data.TOTAL_FEE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.PACKAGE');
         $I->dontSeeResponseContainsJson(['code' => 401]);
+        $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);
     }
 }
