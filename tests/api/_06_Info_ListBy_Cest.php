@@ -19,6 +19,7 @@ class _06_Info_ListBy_Cest
         $page = 1;
         $limit = 20;
         $urlParams = [
+            
             $startDate,
             $endDate,
             $page,
@@ -34,6 +35,7 @@ class _06_Info_ListBy_Cest
         // $I->CheckNumber($data);
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseContains('data');
+        // $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
     }

@@ -7,9 +7,6 @@ class _17_User_GetOrder_Info_Cest
     }
 
     // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
 
     public function UserGetOrderInfo(ApiTester $I)
     {

@@ -7,9 +7,6 @@ class _10_Province_ListAll_Cest
     }
 
     // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
 
     public function ProvinceList(ApiTester $I) 
     {

@@ -7,9 +7,6 @@ class _12_FlatComplex_ListByWhite_Cest
     }
 
     // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
 
     public function FlatComplexListBy(ApiTester $I)
     {

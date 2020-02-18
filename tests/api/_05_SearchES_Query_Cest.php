@@ -7,15 +7,12 @@ class _05_SearchES_Query_Cest
     }
 
     // tests
-    public function tryToTest(ApiTester $I)
+
+    public function SearchES(ApiTester $I) 
     {
-    }
-
-    Public function SearchES(ApiTester $I) {
-
         $I->AdminLogin();
         $I->wantTo('Get the Search Query data');
-        $name= "name";
+        $name= "%E4%B8%AD%E6%B0%B4";
         $type = "flatComplex";
         $role = 'hq';
         $path = sprintf('/SearchES/Query?name=%s&type=%s&role=%s&role_id=%d', $name, $type, $role, null);

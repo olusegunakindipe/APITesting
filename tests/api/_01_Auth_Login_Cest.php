@@ -7,9 +7,6 @@ class _01_Auth_Login_Cest
     }
 
     // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
 
     public function Login(ApiTester $I)
     {

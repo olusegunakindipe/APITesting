@@ -35,6 +35,7 @@ class _16_UserDuration_ListBy_Cest
         $I->DisplayResponse($data);
         $I->seeResponseJsonMatchesJsonPath('$.data');
         $I->grabResponse();
+        // $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }

@@ -7,9 +7,6 @@ class _11_CarportStat_QueryHq__Cest
     }
 
     // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
     public function CarportStat(ApiTester $I)
     {
         $I->AdminLogin();

@@ -10,7 +10,7 @@ class _07_Statistics_Info_Hq_Cest
     public function tryToTest(ApiTester $I)
     {
     }
-    public function StatisticsInfo(ApiTester $I)
+    public function InfoListBy(ApiTester $I)
     {
         $I->AdminLogin();
         $I->wantTo('Get the Matching fields in the List');
@@ -21,6 +21,8 @@ class _07_Statistics_Info_Hq_Cest
         $I->grabResponse();
         // $I->CheckResponseTimeEquals($data);
         $I->seeResponseJsonMatchesJsonPath('$.data');
+        // $I->CheckId();
+        $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
     }
 }

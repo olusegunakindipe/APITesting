@@ -7,10 +7,7 @@ class _18_User_Balance_LogCest
     }
 
     // tests
-    public function tryToTest(ApiTester $I)
-    {
-    }
-
+  
     public function UserBalanceLog(ApiTester $I)
     {
         $I->AdminLogin();

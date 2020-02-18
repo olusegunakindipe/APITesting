@@ -30,6 +30,8 @@ class _04_SearchES_Stat_Hq_Cest
         $I->DisplayResponse($data); //This is response Time
         $I->seeResponseCodeIsSuccessful();
         $I->grabResponse();
+        // $I->CheckResponseTimeEquals($data);
+        // $I->CheckId();
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);   
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
