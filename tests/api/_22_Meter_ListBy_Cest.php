@@ -27,6 +27,7 @@ class _22_Meter_ListBy_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CELL_NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].ELECTRICITY_METER_NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].ELECTRICITY_METER_SN');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.pageTotal');
         $I->seeResponseIsJson();
         $I->dontSeeResponseCodeIs(401);    
         $I->seeResponseCodeIs(200);

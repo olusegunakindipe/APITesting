@@ -18,11 +18,11 @@ class _10_Province_ListAll_Cest
         $I->DisplayResponse($data);
         $I->grabResponse();
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
-        $I->seeResponseJsonMatchesJsonPath('$.data...DISTRICT_CODE');
-        $I->seeResponseJsonMatchesJsonPath('$.data...DISTRICT_NAME');
-        $I->seeResponseJsonMatchesJsonPath('$.data...GPS_LAT');
-        $I->seeResponseJsonMatchesJsonPath('$.data...GPS_LNG');
-        $I->seeResponseJsonMatchesJsonPath('$.data...PID');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].DISTRICT_CODE');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].DISTRICT_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].GPS_LAT');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].GPS_LNG');
+        $I->seeResponseJsonMatchesJsonPath('$.data[0].PID');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
         // just test DISTRICT_CODE

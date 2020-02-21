@@ -33,6 +33,7 @@ class _11_CarportStat_QueryHq__Cest
             'ArpuOrderNum' => 'string|null'
             ]
         ]);
+        $I->seeResponseJsonMatchesJsonPath('$.data.log[0].orderNum');
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);

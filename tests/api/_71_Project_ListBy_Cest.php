@@ -28,6 +28,7 @@ class _71_Project_ListBy_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CIID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ACTUAL_PORT_COUNT');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ELECTRICITY_NUMBER');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 
     }

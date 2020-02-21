@@ -34,6 +34,8 @@ class _19_User_GetRechargeInfo_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.rechargeOrder');
         $I->seeResponseJsonMatchesJsonPath('$.data.rechargeUser');
         $I->seeResponseJsonMatchesJsonPath('$.data.rechargeMoney');
+        $I->seeResponseJsonMatchesJsonPath('$.data.log.[0].rechargeOrderNum');
+        $I->seeResponseJsonMatchesJsonPath('$.data.log.[0].userNum');
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 

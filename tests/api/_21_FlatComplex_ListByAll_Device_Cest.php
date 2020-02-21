@@ -28,6 +28,7 @@ class _21_FlatComplex_ListByAll_Device_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CELL_NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CREATE_TIME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].ALARM_NUM');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.pageTotal');
         $I->dontSeeResponseCodeIs(404);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);

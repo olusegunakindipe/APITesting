@@ -28,6 +28,7 @@ class _12_FlatComplex_ListByWhite_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...STATE');
         $I->seeResponseJsonMatchesJsonPath('$.data...MOBILE_PHONE');
         $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontseeResponseCodeIs(404);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);

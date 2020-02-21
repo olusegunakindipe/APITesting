@@ -32,6 +32,7 @@ class _53_Carport_ListByRechange_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].RECHARGE_ORDER_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].TRANSACTION_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].MOBILE_PHONE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }

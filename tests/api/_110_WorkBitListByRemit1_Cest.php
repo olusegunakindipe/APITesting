@@ -31,6 +31,7 @@ class _110_WorkBitListByRemit1_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].MANAGEMENT_FEE');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].DEDUCTED_TERM');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].DEDUCTED_MONEY');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 

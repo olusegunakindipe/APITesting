@@ -26,6 +26,7 @@ class _62_Carport_ListByRealAlert_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ALERT_TIME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].DEVICE_SN');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CARPORT_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 

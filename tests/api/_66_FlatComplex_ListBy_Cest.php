@@ -26,6 +26,7 @@ class _66_FlatComplex_ListBy_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...CELL_DISTRICT_CODE');
         $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data...CELL_NAME_ABBREVIATION');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->seeResponseIsJson();

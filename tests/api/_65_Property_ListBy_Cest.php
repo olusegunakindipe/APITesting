@@ -26,6 +26,7 @@ class _65_Property_ListBy_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...PROPERTY_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data...PROPERTY_ACCOUNT');
         $I->seeResponseJsonMatchesJsonPath('$.data...PROPERTY_TYPE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);

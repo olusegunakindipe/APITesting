@@ -35,6 +35,7 @@ class _54_Carport_ListByRefund_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...REFUND_ORDER_NO');
         $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data...CREATE_TIME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseContainsJson(['data' => 'invalid startDate']);
         $I->dontSeeResponseContainsJson(['data' => 'Invalid endDate']);
         $I->seeResponseIsJson(); 

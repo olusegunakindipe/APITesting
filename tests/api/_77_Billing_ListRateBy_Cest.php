@@ -26,6 +26,7 @@ class _77_Billing_ListRateBy_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].STRATEGY_RATE_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].SITE_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->seeResponseIsJson(); 
         $I->dontseeResponseCodeIs(401);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

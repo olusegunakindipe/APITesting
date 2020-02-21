@@ -26,6 +26,7 @@ class _29_Alert_ListByRealAlert_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...DEVICE_SN');
         $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data...SITE_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.pageTotal');
         $I->seeResponseIsJson();
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(200); 

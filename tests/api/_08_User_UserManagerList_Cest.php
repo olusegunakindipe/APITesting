@@ -26,10 +26,11 @@ class _08_User_UserManagerList_Cest
         $data = $I->sendGET($path);
         $I->DisplayResponse($data); //This is response Time
         // $I->checkUserManagerData($data);
-        $id = $I->grabDataFromResponseByJsonPath('$.data.data[0].USER_ID');
-        $id = $I->grabDataFromResponseByJsonPath('$.data.data[0].MOBILE_PHONE');
-        $id = $I->grabDataFromResponseByJsonPath('$.data.data[0].BALANCE');
-        $id = $I->grabDataFromResponseByJsonPath('$.data.data[0].CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].USER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].MOBILE_PHONE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].BALANCE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);

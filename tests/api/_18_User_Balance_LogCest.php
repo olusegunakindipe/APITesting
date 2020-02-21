@@ -33,7 +33,7 @@ class _18_User_Balance_LogCest
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].USER_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].NICK_NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].RECHARGE_ORDER_ID');
-        $I->seeResponseJsonMatchesJsonPath('$.data...USER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 

@@ -25,6 +25,7 @@ class _36_Carport_ListByCurrentOrder_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].USER_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CHARGE_ORDER_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].MOBILE_PHONE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.pageTotal');
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);

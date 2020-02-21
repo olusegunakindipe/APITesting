@@ -32,6 +32,7 @@ class _35_Carport_Feedback_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].AREA');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.pageTotal');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
     }

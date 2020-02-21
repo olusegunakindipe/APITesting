@@ -28,6 +28,7 @@ class _48_User_GetUserStopPackage_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].PACKAGE_ORDER_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].USER_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CARPORT_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.pageTotal');
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         $I->seeResponseIsJson();

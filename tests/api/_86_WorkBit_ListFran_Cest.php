@@ -31,6 +31,7 @@ class _86_WorkBit_ListFran_Cest
                 'FRAN_CHARGE' => 'float'
             ]
         ]);
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 
     }

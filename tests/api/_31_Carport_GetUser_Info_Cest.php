@@ -26,7 +26,7 @@ class _31_Carport_GetUser_Info_Cest
         $I->DisplayResponse($data);
         // $I->CheckUserInfo($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
-        $I->seeResponseJsonMatchesJsonPath('$.data...newUser');
+        $I->seeResponseJsonMatchesJsonPath('$.data..newUser');
         $I->seeResponseJsonMatchesJsonPath('$.data...buyUser');
         $I->seeResponseJsonMatchesJsonPath('$.data...arpuIncomeNum');
         $I->seeResponseMatchesJsonType(['data' =>

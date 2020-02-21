@@ -28,6 +28,7 @@ class _88_WorkBit_ListRent_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...BIS_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data...RENT_NO');
         $I->seeResponseJsonMatchesJsonPath('$.data...UPDATE_TIME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseCodeIs(401); 
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 

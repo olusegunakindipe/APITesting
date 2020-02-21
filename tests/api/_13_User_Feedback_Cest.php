@@ -34,6 +34,7 @@ class _13_User_Feedback_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...AREA');
         $I->seeResponseJsonMatchesJsonPath('$.data...CELL_NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data...CELL');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }

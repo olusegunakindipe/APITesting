@@ -30,6 +30,7 @@ class _32_Carport_UserManagerList_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CELL_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].MOBILE_PHONE');
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CREATE_TIME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.pageTotal');
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

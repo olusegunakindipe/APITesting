@@ -30,6 +30,7 @@ class _111_WorkBit_ListByUserWithdraw_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].WITHDRAW_NO');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].UPDATE_TIME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].WITHDRAW_FEE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->seeResponseIsJson();
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);

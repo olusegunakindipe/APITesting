@@ -29,6 +29,7 @@ class _15_Order_ListBy_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CELL_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].NICK_NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CREATE_TIME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->DisplayResponse($data);
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();

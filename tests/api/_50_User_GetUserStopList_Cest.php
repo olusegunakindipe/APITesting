@@ -26,6 +26,7 @@ class _50_User_GetUserStopList_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].IN_USER_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CREATE_TIME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ENTRANCE_GUARD_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.pageTotal');
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);

@@ -30,6 +30,7 @@ class _45_User_GetUserPackage_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...PACKAGE_ORDER_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data...STATE');
         $I->seeResponseJsonMatchesJsonPath('$.data...PAY_TYPE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.pageTotal');
         $I->wantTo('check if data returned json');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);

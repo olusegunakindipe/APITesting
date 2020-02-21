@@ -27,6 +27,7 @@ class _56_CarportListByMeter_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data...CELL_NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data...ELECTRICITY_METER_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->grabResponse();

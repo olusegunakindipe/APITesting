@@ -31,6 +31,7 @@ class _06_Info_ListBy_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].TOPIC_CONTENT');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].TOPIC_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CREATE_USER_ACCOUNT');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseContains('data');
         $I->seeResponseIsJson();

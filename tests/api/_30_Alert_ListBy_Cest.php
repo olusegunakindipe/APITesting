@@ -31,6 +31,7 @@ class _30_Alert_ListBy_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data...SITE_NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data...DEVICE_TYPE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.pageTotal');
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

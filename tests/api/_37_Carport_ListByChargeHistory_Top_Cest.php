@@ -30,6 +30,7 @@ class _37_Carport_ListByChargeHistory_Top_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].USER_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.pageTotal');
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         $I->seeResponseIsJson();

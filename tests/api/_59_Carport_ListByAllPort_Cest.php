@@ -26,6 +26,7 @@ class _59_Carport_ListByAllPort_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data...CELL_NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data...CARPORT_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->grabResponse();
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();

@@ -27,6 +27,7 @@ class _105_CarPortListByPile_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...CHARGING_PILE_STATE');
         $I->seeResponseJsonMatchesJsonPath('$.data...CELL_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data...CARPORT_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 
     }
