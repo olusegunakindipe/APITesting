@@ -10,7 +10,7 @@ class _45_User_GetUserPackage_Cest
     {
         $I->AdminLogin();
         $I->wantTo('check possible data in the API record corresponding');
-        $id = '100000157254';
+        $id = '100000038787';
         $page = 1;
         $size = 20;
         $urlParams = [

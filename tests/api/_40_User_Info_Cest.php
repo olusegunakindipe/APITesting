@@ -10,7 +10,7 @@ class _40_User_Info_Cest
     {
         $I->AdminLogin();
         $I->wantTo('check possible data in the API record corresponding');
-        $id = '100000227661';
+        $id = '100000005210';
         $urlParams = [
             $id
         ];

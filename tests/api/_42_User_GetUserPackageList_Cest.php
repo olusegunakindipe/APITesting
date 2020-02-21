@@ -13,7 +13,7 @@ class _42_User_GetUserPackageList_Cest
         $I->wantTo('check possible data in the API record corresponding');
         $page = 1;
         $size = 20;
-        $id = '100000194423';
+        $id = '100000039429';
         $urlParams = [
             $id,
             $page,

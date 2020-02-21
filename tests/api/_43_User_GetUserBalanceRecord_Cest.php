@@ -10,7 +10,7 @@ class _43_User_GetUserBalanceRecord_Cest
     {
         $I->AdminLogin();
         $I->wantTo('check possible data in the API record corresponding');
-        $id = '100000194423';
+        $id = '100000005210';
         $page = 1;
         $size = 20;
         $urlParams = [
