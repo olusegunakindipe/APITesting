@@ -28,6 +28,8 @@ class _04_SearchES_Stat_Hq_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.log[0].cost_fee');
         $I->seeResponseJsonMatchesJsonPath('$.data.log[0].degree');
         $I->seeResponseJsonMatchesJsonPath('$.data.log[0].total_count');
+        $I->seeResponseJsonMatchesJsonPath('$.data.cal.sumDegree');
+        $I->seeResponseJsonMatchesJsonPath('$.data.cal.sumArpu');
         $I->dontSeeResponseCodeIs(401);
         $I->grabResponse();
         $I->seeResponseIsJson();

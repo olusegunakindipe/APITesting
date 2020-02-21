@@ -26,6 +26,7 @@ class _82_Package_SystemStopListBy_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...SYS_DURATION_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data...DESCRIPTION');
         $I->seeResponseJsonMatchesJsonPath('$.data...CELL_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->seeResponseIsJson(); 
         $I->dontSeeResponseCodeIs(401); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

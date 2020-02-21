@@ -22,7 +22,7 @@ class _51_Carport_GetwhiteListCest
         $I->SeeResponseMatchesJsonType(['data'=>[
             'ID'=> 'string',
             'model_no' => 'string',
-            'NICK_NAME' => 'string',
+            'NICK_NAME' => 'string|null',
             'CREATE_USER_ACCOUNT' => 'string',
             'USER_STATE'=> 'string',
             'CARD_NO' => 'string|null'

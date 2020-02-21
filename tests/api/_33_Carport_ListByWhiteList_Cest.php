@@ -26,6 +26,7 @@ class _33_Carport_ListByWhiteList_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].model_no');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].MODEL_TYPE');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CREATE_TIME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.pageTotal');
         $I->dontSeeResponseContainsJson(['data' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 

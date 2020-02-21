@@ -32,6 +32,7 @@ class _16_UserDuration_ListBy_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].SITE_NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].USER_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CELL_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->grabResponse();
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseIsJson();

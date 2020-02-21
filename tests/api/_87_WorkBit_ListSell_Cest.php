@@ -25,6 +25,7 @@ class _87_WorkBit_ListSell_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].BI_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].SELL_NO');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseCodeIs(401); 
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 

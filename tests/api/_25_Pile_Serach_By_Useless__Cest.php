@@ -25,7 +25,7 @@ class _25_Pile_Serach_By_Useless__Cest
         print_r($datas[0]['pageInfo']['total']);
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CHARGING_PILE_SN');
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CHARGING_PILE_NAME');
-        $I->seeResponseJsonMatchesJsonPath('$.debug.time');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.pageTotal');
         $I->seeResponseIsJson();
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseCodeIs(200);  

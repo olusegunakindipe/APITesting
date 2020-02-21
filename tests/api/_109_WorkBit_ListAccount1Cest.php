@@ -31,6 +31,7 @@ class _109_WorkBit_ListAccount1Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].WITHDRAWALS');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ACCOUNT_TYPE');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].BALANCE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         // $I->TestAccountList($data);
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->dontSeeResponseContainsJson(['data' => null]);

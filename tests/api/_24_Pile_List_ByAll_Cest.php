@@ -25,6 +25,7 @@ class _24_Pile_List_ByAll_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CHARGING_PILE_SN');
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CHARGING_PILE_SN');
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].CHARGING_PILE_SN');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.pageTotal');
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);

@@ -31,6 +31,7 @@ class _97_SystemSystem_ListBySysOperateLog_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ADDRESS');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].IP');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].OPEATION_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseCodeIs(200);
     }

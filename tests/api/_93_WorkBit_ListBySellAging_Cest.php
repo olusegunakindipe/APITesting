@@ -27,6 +27,7 @@ class _93_WorkBit_ListBySellAging_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...AGING_FEE');
         $I->seeResponseJsonMatchesJsonPath('$.data...TOTAL_AGING_FEE');
         $I->seeResponseJsonMatchesJsonPath('$.data...CREATE_USER_ACCOUNT');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseCodeIs(401); 
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 

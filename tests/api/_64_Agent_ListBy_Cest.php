@@ -25,6 +25,7 @@ class _64_Agent_ListBy_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].AGENT_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].AGENT_TYPE');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].AGENT_ACCOUNT');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         // $I->checkAgentData($data);
         $I->dontSeeResponseContainsJson(['data' => 'UNAUTHORIZED']);
         $I->seeResponseIsJson(); 

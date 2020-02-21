@@ -29,6 +29,7 @@ class _43_User_GetUserBalanceRecord_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...AFTER_BALANCE');
         $I->seeResponseJsonMatchesJsonPath('$.data...createTime');
         $I->seeResponseJsonMatchesJsonPath('$.data...moneyType');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.pageTotal');
         // $I->getUserBalanceData($data);
         $I->seeResponseIsJson();
         $I->dontseeResponseCodeIs(401);

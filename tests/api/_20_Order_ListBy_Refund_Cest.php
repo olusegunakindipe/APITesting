@@ -33,6 +33,8 @@ class _20_Order_ListBy_Refund_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].TYPE');
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].REFUND_ORDER_NO');
         $I->seeResponseJsonMatchesJsonPath('$.data.data.[0].USER_ID');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.pageTotal');
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 

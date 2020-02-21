@@ -25,6 +25,7 @@ class _80_Carport_ListByStopRate_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].RATE_NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].BILLING_TYPE');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CREATE_TIME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         $I->dontSeeResponseCodeIs(401);

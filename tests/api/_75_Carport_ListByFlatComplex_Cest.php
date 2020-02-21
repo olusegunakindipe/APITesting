@@ -25,6 +25,7 @@ class _75_Carport_ListByFlatComplex_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].MAX_CHARGE_MINUTE');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_TYPE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         // $I->CheckTestData($data);
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

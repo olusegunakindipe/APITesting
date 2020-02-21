@@ -27,6 +27,7 @@ class _73_FlatComplex_ListBySite_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].GPS_LNG');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_TELEPHONE');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].SITE_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         $I->seeResponseIsJson();

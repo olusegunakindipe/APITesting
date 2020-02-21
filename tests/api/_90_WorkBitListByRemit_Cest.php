@@ -30,6 +30,7 @@ class _90_WorkBitListByRemit_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CREATE_TIME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].UPDATE_TIME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].WITHDRAW_FEE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         // $I->CheckWorkBitList($data); 
         $I->dontSeeResponseContainsJson(['code' => 401]);
         $I->seeResponseIsJson(); 

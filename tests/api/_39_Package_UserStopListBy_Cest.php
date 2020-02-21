@@ -28,6 +28,7 @@ class _39_Package_UserStopListBy_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].PACKAGE_ORDER_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CAR_TYPE_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.pageTotal');
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);

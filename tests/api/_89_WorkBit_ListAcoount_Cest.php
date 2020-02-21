@@ -30,6 +30,7 @@ class _89_WorkBit_ListAcoount_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].BALANCE');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].DEDUCTED_MONEY');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         // $I->TestAccountList($data);
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);

@@ -28,6 +28,7 @@ class _84_WorkBit_ListByRetail_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].BI_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].SPLIT_TYPE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(200); 
     }

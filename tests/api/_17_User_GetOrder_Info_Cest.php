@@ -27,6 +27,8 @@ class _17_User_GetOrder_Info_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.chargeOrder');
         $I->seeResponseJsonMatchesJsonPath('$.data.totalOrder');
         $I->seeResponseJsonMatchesJsonPath('$.data.stopOrder');
+        $I->seeResponseJsonMatchesJsonPath('$.data.log[0].statistics_date');
+        $I->seeResponseJsonMatchesJsonPath('$.data.log[0].orderNum');
         $I-> seeResponseMatchesJsonType(['data' =>
             [
                 'chargeOrder' => 'string',

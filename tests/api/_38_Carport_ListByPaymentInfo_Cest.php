@@ -32,6 +32,7 @@ class _38_Carport_ListByPaymentInfo_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].STOP_ORDER_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CARPORT_NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CAR_TYPE_NAME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.pageTotal');
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->seeResponseIsJson();
         $I->dontSeeResponseCodeIs(401);

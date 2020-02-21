@@ -25,6 +25,7 @@ class _81_Package_SystemDuration_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].PACKAGE_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].POWER_TYPE_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].STATE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->seeResponseIsJson(); 
         $I->dontSeeResponseCodeIs(401); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

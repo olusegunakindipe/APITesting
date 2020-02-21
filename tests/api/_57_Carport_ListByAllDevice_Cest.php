@@ -28,6 +28,7 @@ class _57_Carport_ListByAllDevice_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CELL_NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CREATE_TIME');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         // $I->CheckResponseTimeEquals($data);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 

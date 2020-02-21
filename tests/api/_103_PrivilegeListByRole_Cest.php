@@ -29,6 +29,7 @@ class _103_PrivilegeListByRole_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...account');
         $I->seeResponseJsonMatchesJsonPath('$.data...status');
         $I->seeResponseJsonMatchesJsonPath('$.data...is_reset');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseCodeIs(401);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200);

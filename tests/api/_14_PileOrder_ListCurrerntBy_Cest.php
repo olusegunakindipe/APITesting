@@ -28,6 +28,7 @@ class _14_PileOrder_ListCurrerntBy_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...CHARGE_ORDER_ID');
         $I->seeResponseJsonMatchesJsonPath('$.data...MOBILE_PHONE');
         $I->seeResponseJsonMatchesJsonPath('$.data...CARD_NO');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseCodeIs(404);
         $I->seeResponseIsJson();
         $I->seeResponseCodeIs(200); 

@@ -26,6 +26,7 @@ class _99_SystemListByUploadHistory_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data...CREATE_ACCOUNT');
         $I->seeResponseJsonMatchesJsonPath('$.data...UPLOAD_TIME');
         $I->seeResponseJsonMatchesJsonPath('$.data...UPLOAD_STATE');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseCodeIs(401); 
         $I->seeResponseIsJson(); 
         $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK); 

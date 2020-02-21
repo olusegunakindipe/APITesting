@@ -26,6 +26,7 @@ class _60_Carport_ListByDevice_Cest
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].ENTRANCE_GUARD_NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].CARPORT_NAME');
         $I->seeResponseJsonMatchesJsonPath('$.data.data[0].DEVICE_SN');
+        $I->seeResponseJsonMatchesJsonPath('$.data.pageInfo.total');
         $I->dontSeeResponseContainsJson(['data' => 'invalid page']);
         $I->dontSeeResponseContainsJson(['data' => 'invalid size']);
         $I->grabResponse();
